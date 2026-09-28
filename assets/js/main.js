@@ -29,29 +29,55 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // ---------- Product enquiry modal ----------
     var overlay = document.getElementById('enquiryModalOverlay');
+    var modalBox = document.getElementById('enquiryModalBox');
     var closeBtn = document.getElementById('enquiryModalClose');
-    var productLabel = document.getElementById('enquiryProductLabel');
-    var productNameEl = document.getElementById('enquiryProductName');
+    var productPanel = document.getElementById('enquiryProductPanel');
+    var productImageEl = document.getElementById('enquiryProductImage');
+    var productTitleEl = document.getElementById('enquiryProductTitle');
+    var productDescEl = document.getElementById('enquiryProductDesc');
+    var packSizesWrap = document.getElementById('enquiryPackSizesWrap');
+    var packSizesEl = document.getElementById('enquiryPackSizes');
     var productIdEl = document.getElementById('enquiryProductId');
     var enquiryTypeEl = document.getElementById('enquiryType');
     var formWrap = document.getElementById('enquiryFormWrap');
     var successEl = document.getElementById('enquirySuccess');
     var form = document.getElementById('enquiryForm');
 
-    function openModal(productId, productName, enquiryType) {
+    function openModal(el, productId, productName, enquiryType) {
         if (!overlay) return;
         formWrap.style.display = 'block';
         successEl.style.display = 'none';
         form.reset();
 
-        if (productName) {
-            productLabel.style.display = 'block';
-            productNameEl.textContent = productName;
-            productIdEl.value = productId || '';
+        var productImage = el.getAttribute('data-product-image');
+
+        if (productName && productImage) {
+            productPanel.style.display = 'block';
+            modalBox.classList.remove('no-product-panel');
+            productImageEl.src = productImage;
+            productImageEl.alt = productName;
+            productTitleEl.textContent = productName;
+            productDescEl.textContent = el.getAttribute('data-product-desc') || '';
+
+            var packSizes = (el.getAttribute('data-pack-sizes') || '').split(',').map(function (s) { return s.trim(); }).filter(Boolean);
+            if (packSizes.length) {
+                packSizesWrap.style.display = 'block';
+                packSizesEl.innerHTML = '';
+                packSizes.forEach(function (size) {
+                    var span = document.createElement('span');
+                    span.textContent = size;
+                    packSizesEl.appendChild(span);
+                });
+            } else {
+                packSizesWrap.style.display = 'none';
+            }
+
+            productIdEl.value = productId || productName;
             enquiryTypeEl.value = enquiryType || 'Product Enquiry';
         } else {
-            productLabel.style.display = 'none';
-            productIdEl.value = '';
+            productPanel.style.display = 'none';
+            modalBox.classList.add('no-product-panel');
+            productIdEl.value = productName || '';
             enquiryTypeEl.value = enquiryType || 'General Enquiry';
         }
         overlay.classList.add('open');
@@ -63,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
             var productId = el.getAttribute('data-product-id');
             var productName = el.getAttribute('data-product-name');
             var enquiryType = el.getAttribute('data-enquiry-type') || 'Product Enquiry';
-            openModal(productId, productName, enquiryType);
+            openModal(el, productId, productName, enquiryType);
         });
     });
 

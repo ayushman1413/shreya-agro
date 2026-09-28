@@ -433,6 +433,48 @@ p { margin: 0 0 12px; color: var(--color-text-light); }
 .form-success { background: #e9f6ea; color: var(--color-primary-dark); padding: 14px; border-radius: 8px; font-size: 0.9rem; }
 .form-error { background: #fdeceb; color: #a13a34; padding: 10px 14px; border-radius: 8px; font-size: 0.85rem; margin-bottom: 12px; }
 
+/* ---------- Product quick-view enquiry modal (image + specs + form) ---------- */
+.modal-box-product { max-width: 760px; padding: 0; overflow: hidden; }
+.modal-box-product .modal-close {
+    z-index: 2; background: rgba(255,255,255,0.9); border-radius: 50%;
+    width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;
+}
+.modal-grid { display: grid; grid-template-columns: 1fr 1fr; max-height: 90vh; }
+/* No product context (general/B2B enquiries): single narrow column, same as before */
+.modal-box-product.no-product-panel { max-width: 480px; }
+.modal-box-product.no-product-panel .modal-grid { grid-template-columns: 1fr; }
+.modal-product-panel { padding: 28px; overflow-y: auto; border-right: 1px solid #eef1ea; }
+.modal-product-image { border-radius: var(--radius); overflow: hidden; margin-bottom: 14px; aspect-ratio: 1/1; background: var(--color-bg-alt); }
+.modal-product-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.modal-product-badge {
+    display: inline-block; background: #e9f6ea; color: var(--color-primary-dark);
+    font-size: 0.72rem; font-weight: 700; padding: 4px 10px; border-radius: 20px; margin-bottom: 10px;
+}
+.modal-product-panel h3 { font-family: var(--font-heading); font-size: 1.25rem; margin-bottom: 8px; }
+.modal-product-panel > p { font-size: 0.88rem; color: var(--color-text-light); margin-bottom: 16px; }
+.modal-trust-icons { display: flex; gap: 14px; margin-bottom: 22px; flex-wrap: wrap; }
+.modal-trust-icons .trust-icon { display: flex; align-items: center; gap: 6px; font-size: 0.72rem; font-weight: 600; color: var(--color-text); }
+.modal-trust-icons .trust-icon span {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 26px; height: 26px; border-radius: 50%; background: var(--color-bg-alt); font-size: 0.9rem;
+}
+.modal-pack-sizes .pack-label { display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 8px; }
+.pack-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+.pack-pills span { padding: 7px 16px; border: 1px solid #d8ddd2; border-radius: 20px; font-size: 0.82rem; font-weight: 600; color: var(--color-text); }
+.modal-form-panel { padding: 28px; overflow-y: auto; }
+.modal-form-eyebrow {
+    display: inline-block; background: #e9f6ea; color: var(--color-primary-dark);
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 20px; margin-bottom: 10px;
+}
+.modal-form-panel h3 { font-family: var(--font-heading); font-size: 1.35rem; margin-bottom: 8px; }
+.modal-form-panel > p { font-size: 0.88rem; color: var(--color-text-light); margin-bottom: 18px; }
+@media (max-width: 720px) {
+    .modal-grid { grid-template-columns: 1fr; max-height: 85vh; overflow-y: auto; }
+    .modal-product-panel { border-right: none; border-bottom: 1px solid #eef1ea; overflow-y: visible; }
+    .modal-form-panel { overflow-y: visible; }
+}
+
 /* ---------- Breadcrumbs ---------- */
 .breadcrumbs { font-size: 0.85rem; color: var(--color-text-light); margin-bottom: 20px; }
 .breadcrumbs a:hover { color: var(--color-primary); }
