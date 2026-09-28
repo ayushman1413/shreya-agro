@@ -35,15 +35,15 @@ Since there's no admin panel or database, content changes are direct file edits:
 - **Add a product**: duplicate one of the `products/<slug>/index.html` files, update its content/meta tags, add a matching card to `products/index.html` and (if it should appear there) `index.html`, and add its URL to `sitemap.xml`.
 - **Edit categories, company info, phone/email**: search-and-replace across the HTML files (the phone number `+91 XXXXX XXXXX` and email are repeated in every page's footer/contact section).
 
-## Replacing placeholder images
+## Product & category photography
 
-Per the SEO brief, every image must be WebP, compressed, and descriptively named. This build ships with **layout placeholders** (text-only tiles) since no stock photography was available from the linked Drive folder at build time. To finish:
+All product photos, category tiles, the hero banner, the factory/quality photo, and the closing B2B banner are real images (WebP, compressed to 45–130KB each) in `assets/images/categories/`, `assets/images/products/`, and `assets/images/`. Two categories — **Syrups** and **Oils** — still use the icon/gradient placeholder tile since no photo exists for them yet. To finish those:
 
-1. Export/compress real product & category photos as WebP (100–300KB target).
-2. Name them descriptively, e.g. `shreya-agro-foods-mix-fruit-jam.webp`.
-3. Save category images to `assets/images/categories/` and product images to `assets/images/products/`.
-4. In each page, replace the placeholder `<span>` tile inside `.thumb` / `.gallery-main` with an `<img>` tag pointing at the uploaded file (include `loading="lazy"` except on the homepage hero).
-5. The homepage also references `assets/images/shreya-agro-foods-quality-facility.webp` for the "Quality You Can Trust" section — upload it there, or the section gracefully collapses if it's missing (see the `onerror` handler in `index.html`).
+1. Export/compress a real photo as WebP (100–300KB target).
+2. Name it `shreya-agro-foods-syrups.webp` / `shreya-agro-foods-oils.webp` and save to `assets/images/categories/`.
+3. In `index.html` and `products/index.html`, replace that category's `<div class="thumb cat-syrups"><span class="icon-tile">🧃</span></div>` (or `cat-oils`) with `<div class="thumb"><img src="/assets/images/categories/shreya-agro-foods-syrups.webp" alt="Shreya Agro Foods Syrups" loading="lazy" width="800" height="600"></div>` (same pattern used for every other category).
+
+If you add more products later, follow the same pattern: a square (800×800) WebP in `assets/images/products/`, referenced from the popular-products card, the product detail page's gallery, and any related-product cards that link to it.
 
 ## SEO features already in place
 
@@ -57,7 +57,7 @@ Per the SEO brief, every image must be WebP, compressed, and descriptively named
 
 ## What's stubbed / needs your input
 
-- Real product & category photography (see above)
+- Syrups and Oils category photos (see above)
 - Web3Forms access key (see above) — **forms won't work until this is set**
 - Phone number placeholder `+91 XXXXX XXXXX` — find-and-replace across all pages
 - Social media links in every page's footer currently point to `#`
