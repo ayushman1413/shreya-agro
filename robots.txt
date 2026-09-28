@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /actions/
+Disallow: /storage/
+Disallow: /config/
+Disallow: /database/
+
+Sitemap: https://www.shreyaagrofoods.com/sitemap.xml
