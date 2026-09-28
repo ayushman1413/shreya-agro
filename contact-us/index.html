@@ -1,16 +1,49 @@
-<?php
-require_once __DIR__ . '/includes/functions.php';
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact Shreya Agro Foods | B2B & Business Enquiries</title>
+<meta name="description" content="Get in touch with Shreya Agro Foods for product enquiries, B2B partnerships, distribution opportunities and careers.">
+<link rel="canonical" href="https://www.shreyaagrofoods.com/contact-us/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Shreya Agro Foods">
+<meta property="og:title" content="Contact Shreya Agro Foods | B2B & Business Enquiries">
+<meta property="og:description" content="Get in touch with Shreya Agro Foods for product enquiries, B2B partnerships, distribution opportunities and careers.">
+<meta property="og:image" content="https://www.shreyaagrofoods.com/assets/images/shreya-agro-foods-logo.png">
+<meta property="og:url" content="https://www.shreyaagrofoods.com/contact-us/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="icon" href="/assets/images/shreya-agro-foods-logo.png">
+</head>
+<body>
 
-$currentPage = 'contact';
-$pageTitle = 'Contact Shreya Agro Foods | B2B & Business Enquiries';
-$pageDescription = 'Get in touch with Shreya Agro Foods for product enquiries, B2B partnerships, distribution opportunities and careers.';
-$canonicalPath = '/contact-us/';
-$presetEnquiry = $_GET['enquiry'] ?? '';
-
-$careers = fetch_active_careers();
-
-require_once __DIR__ . '/includes/header.php';
-?>
+<header class="site-header">
+    <div class="container">
+        <a href="/" class="brand">
+            <img src="/assets/images/shreya-agro-foods-logo.png" alt="Shreya Agro Foods logo" width="42" height="42">
+            <span class="brand-text">
+                <span class="brand-name" style="display:block;">Shreya Agro Foods Ltd.</span>
+                <span class="brand-tagline">Authentic Taste. Trusted Quality.</span>
+            </span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+        <nav class="main-nav" id="mainNav">
+            <a href="/">Home</a>
+            <a href="/about-us/">About</a>
+            <a href="/products/">Products</a>
+            <a href="/contact-us/" class="active">Contact Us</a>
+            <a href="/careers/">Careers</a>
+        </nav>
+        <div class="header-actions">
+            <button class="search-toggle" id="searchToggle" aria-label="Search products">&#128269;</button>
+            <a href="/contact-us/?enquiry=Business%20Partnership" class="btn btn-primary">Enquire Now</a>
+        </div>
+    </div>
+</header>
 
 <section class="page-hero">
     <div class="container">
@@ -31,15 +64,15 @@ require_once __DIR__ . '/includes/header.php';
                 <h2>Get in Touch</h2>
                 <div class="contact-info-item">
                     <div class="label">📍 Our Office</div>
-                    <div><?= e(SITE_ADDRESS) ?></div>
+                    <div>Mumbai, Maharashtra, India</div>
                 </div>
                 <div class="contact-info-item">
                     <div class="label">📞 Phone</div>
-                    <div><a href="tel:<?= e(SITE_PHONE) ?>"><?= e(SITE_PHONE) ?></a></div>
+                    <div><a href="tel:+91XXXXXXXXXX">+91 XXXXX XXXXX</a></div>
                 </div>
                 <div class="contact-info-item">
                     <div class="label">✉️ Email</div>
-                    <div><a href="mailto:<?= e(SITE_EMAIL) ?>"><?= e(SITE_EMAIL) ?></a></div>
+                    <div><a href="mailto:info@shreyaagrofoods.com">info@shreyaagrofoods.com</a></div>
                 </div>
                 <div class="contact-info-item">
                     <div class="label">Business Enquiries</div>
@@ -50,8 +83,10 @@ require_once __DIR__ . '/includes/header.php';
             <div class="contact-form">
                 <h3>Send Us an Enquiry</h3>
                 <div id="generalFormWrap">
-                    <form id="generalEnquiryForm" action="/actions/submit-enquiry.php" method="post">
-                        <input type="text" name="website" class="visually-hidden" tabindex="-1" autocomplete="off">
+                    <form id="generalEnquiryForm">
+                        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+                        <input type="hidden" name="subject" value="New Enquiry — Shreya Agro Foods website">
+                        <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off">
                         <div class="form-group">
                             <label for="g_name">Name *</label>
                             <input type="text" id="g_name" name="name" placeholder="Enter your name" required>
@@ -129,23 +164,28 @@ require_once __DIR__ . '/includes/header.php';
 <section class="section section-alt">
     <div class="container">
         <h2>Current Openings</h2>
-        <?php if (empty($careers)): ?>
-        <div class="info-card">
-            <h3>No Current Openings</h3>
-            <p>We don't have any active positions at the moment, but we're always interested in meeting talented people.</p>
-            <button type="button" class="btn btn-outline js-open-application" data-position="General Application">Send Your Resume &rarr;</button>
-        </div>
-        <?php else: ?>
-        <?php foreach ($careers as $job): ?>
+
         <div class="job-card">
             <div>
-                <h3><?= e($job['title']) ?></h3>
-                <div class="job-meta">📍 <?= e($job['location']) ?> &nbsp;|&nbsp; 💼 <?= e($job['employment_type']) ?></div>
+                <h3>Sales &amp; Business Development Executive</h3>
+                <div class="job-meta">📍 Mumbai &nbsp;|&nbsp; 💼 Full Time</div>
             </div>
-            <button type="button" class="btn-link js-open-application" data-career-id="<?= (int)$job['id'] ?>" data-position="<?= e($job['title']) ?>" style="background:none; border:none; cursor:pointer;">View Details &amp; Apply &rarr;</button>
+            <button type="button" class="btn-link js-open-application" data-position="Sales &amp; Business Development Executive" style="background:none; border:none; cursor:pointer;">View Details &amp; Apply &rarr;</button>
         </div>
-        <?php endforeach; ?>
-        <?php endif; ?>
+        <div class="job-card">
+            <div>
+                <h3>Marketing Executive</h3>
+                <div class="job-meta">📍 Mumbai &nbsp;|&nbsp; 💼 Full Time</div>
+            </div>
+            <button type="button" class="btn-link js-open-application" data-position="Marketing Executive" style="background:none; border:none; cursor:pointer;">View Details &amp; Apply &rarr;</button>
+        </div>
+        <div class="job-card">
+            <div>
+                <h3>Accounts Executive</h3>
+                <div class="job-meta">📍 Mumbai &nbsp;|&nbsp; 💼 Full Time</div>
+            </div>
+            <button type="button" class="btn-link js-open-application" data-position="Accounts Executive" style="background:none; border:none; cursor:pointer;">View Details &amp; Apply &rarr;</button>
+        </div>
     </div>
 </section>
 
@@ -156,16 +196,81 @@ require_once __DIR__ . '/includes/header.php';
     </div>
 </section>
 
-<!-- General enquiry modal (reuses the enquiry-modal styling but posts type from dropdown) -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-brand">
+                    <img src="/assets/images/shreya-agro-foods-logo.png" alt="Shreya Agro Foods logo" width="34" height="34">
+                    <strong style="color:#fff;">Shreya Agro Foods Ltd.</strong>
+                </div>
+                <p style="color:rgba(255,255,255,0.65); max-width:320px;">Authentic Taste. Trusted Quality.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">F</a>
+                    <a href="#" aria-label="Instagram">I</a>
+                    <a href="#" aria-label="LinkedIn">L</a>
+                    <a href="#" aria-label="YouTube">Y</a>
+                </div>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about-us/">About</a></li>
+                    <li><a href="/products/">Products</a></li>
+                    <li><a href="/contact-us/">Contact Us</a></li>
+                    <li><a href="/careers/">Careers</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Our Products</h4>
+                <ul>
+                    <li><a href="/products/?category=masalas">Masalas</a></li>
+                    <li><a href="/products/?category=biscuits">Biscuits</a></li>
+                    <li><a href="/products/?category=sweets">Sweets</a></li>
+                    <li><a href="/products/?category=jams">Jams</a></li>
+                    <li><a href="/products/">…and more</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <ul>
+                    <li>Mumbai, Maharashtra, India</li>
+                    <li><a href="tel:+91XXXXXXXXXX">+91 XXXXX XXXXX</a></li>
+                    <li><a href="mailto:info@shreyaagrofoods.com">info@shreyaagrofoods.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Shreya Agro Foods Ltd. All rights reserved.
+        </div>
+    </div>
+</footer>
+
+<button class="chatbot-toggle" id="chatbotToggle" aria-label="Open chat">&#128172;</button>
+<div class="chatbot-panel" id="chatbotPanel">
+    <div class="chatbot-head">Hi! 👋 How can we help you?</div>
+    <div class="chatbot-body">
+        <a href="/products/">🛒 Product Enquiry</a>
+        <a href="/contact-us/?enquiry=B2B%20%2F%20Wholesale">🤝 B2B Partnership</a>
+        <a href="/contact-us/?enquiry=Distribution">🚚 Distribution</a>
+        <a href="#careers">💼 Careers</a>
+        <a href="/contact-us/">📞 Contact Us</a>
+    </div>
+</div>
+
+<!-- General enquiry modal (Business Partnership CTAs) -->
 <div class="modal-overlay" id="generalEnquiryOverlay">
     <div class="modal-box">
         <button class="modal-close" id="generalEnquiryClose" aria-label="Close">&times;</button>
         <h3>Send Us an Enquiry</h3>
         <p>Our team will get back to you shortly.</p>
         <div id="generalModalFormWrap">
-            <form id="generalModalForm" action="/actions/submit-enquiry.php" method="post">
+            <form id="generalModalForm">
+                <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+                <input type="hidden" name="subject" value="New B2B Enquiry — Shreya Agro Foods website">
                 <input type="hidden" name="enquiry_type" id="generalModalType" value="Business Partnership">
-                <input type="text" name="website" class="visually-hidden" tabindex="-1" autocomplete="off">
+                <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off">
                 <div class="form-group"><label>Name *</label><input type="text" name="name" required></div>
                 <div class="form-group"><label>Company Name</label><input type="text" name="company_name"></div>
                 <div class="form-group"><label>Location *</label><input type="text" name="location" required></div>
@@ -186,16 +291,17 @@ require_once __DIR__ . '/includes/header.php';
         <h3>Apply for this Position</h3>
         <p><strong>Position:</strong> <span id="applicationPosition"></span></p>
         <div id="applicationFormWrap">
-            <form id="applicationForm" action="/actions/submit-application.php" method="post" enctype="multipart/form-data">
-                <input type="hidden" name="career_id" id="applicationCareerId" value="">
+            <form id="applicationForm">
+                <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+                <input type="hidden" name="subject" value="New Job Application — Shreya Agro Foods">
                 <input type="hidden" name="position_title" id="applicationPositionTitle" value="">
-                <input type="text" name="website" class="visually-hidden" tabindex="-1" autocomplete="off">
+                <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off">
                 <div class="form-group"><label>Full Name *</label><input type="text" name="full_name" required></div>
                 <div class="form-group"><label>Mobile Number *</label><input type="tel" name="mobile" required></div>
                 <div class="form-group"><label>Email *</label><input type="email" name="email" required></div>
                 <div class="form-group"><label>Current Location *</label><input type="text" name="current_location" required></div>
                 <div class="form-group"><label>Experience</label><input type="text" name="experience" placeholder="Years of experience"></div>
-                <div class="form-group"><label>Resume *</label><input type="file" name="resume" accept=".pdf,.doc,.docx" required></div>
+                <div class="form-group"><label>Resume *</label><input type="file" name="attachment" accept=".pdf,.doc,.docx" required></div>
                 <div class="form-group"><label>Message</label><textarea name="message" placeholder="Tell us briefly about yourself..."></textarea></div>
                 <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Submit Application</button>
             </form>
@@ -207,83 +313,6 @@ require_once __DIR__ . '/includes/header.php';
     </div>
 </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    var presetEnquiry = <?= json_encode($presetEnquiry) ?>;
-    if (presetEnquiry) {
-        var select = document.getElementById('g_type');
-        if (select) select.value = presetEnquiry;
-    }
-
-    // Business partnership CTA buttons -> general enquiry modal
-    var genOverlay = document.getElementById('generalEnquiryOverlay');
-    document.querySelectorAll('.js-open-general-enquiry').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-            document.getElementById('generalModalType').value = btn.getAttribute('data-enquiry-type') || 'Business Partnership';
-            genOverlay.classList.add('open');
-        });
-    });
-    document.getElementById('generalEnquiryClose').addEventListener('click', function () { genOverlay.classList.remove('open'); });
-    genOverlay.addEventListener('click', function (e) { if (e.target === genOverlay) genOverlay.classList.remove('open'); });
-
-    document.getElementById('generalModalForm').addEventListener('submit', function (e) {
-        e.preventDefault();
-        var form = e.target, btn = form.querySelector('button[type="submit"]');
-        btn.disabled = true;
-        fetch(form.action, { method: 'POST', body: new FormData(form) })
-            .then(function (r) { return r.json(); })
-            .then(function (data) {
-                btn.disabled = false;
-                if (data.success) {
-                    document.getElementById('generalModalFormWrap').style.display = 'none';
-                    document.getElementById('generalModalSuccess').style.display = 'block';
-                } else { alert(data.message || 'Something went wrong.'); }
-            });
-    });
-
-    document.getElementById('generalEnquiryForm').addEventListener('submit', function (e) {
-        e.preventDefault();
-        var form = e.target, btn = form.querySelector('button[type="submit"]');
-        btn.disabled = true;
-        fetch(form.action, { method: 'POST', body: new FormData(form) })
-            .then(function (r) { return r.json(); })
-            .then(function (data) {
-                btn.disabled = false;
-                if (data.success) {
-                    document.getElementById('generalFormWrap').style.display = 'none';
-                    document.getElementById('generalFormSuccess').style.display = 'block';
-                } else { alert(data.message || 'Something went wrong.'); }
-            });
-    });
-
-    // Career application modal
-    var appOverlay = document.getElementById('applicationOverlay');
-    document.querySelectorAll('.js-open-application').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-            document.getElementById('applicationPosition').textContent = btn.getAttribute('data-position') || '';
-            document.getElementById('applicationPositionTitle').value = btn.getAttribute('data-position') || '';
-            document.getElementById('applicationCareerId').value = btn.getAttribute('data-career-id') || '';
-            appOverlay.classList.add('open');
-        });
-    });
-    document.getElementById('applicationClose').addEventListener('click', function () { appOverlay.classList.remove('open'); });
-    appOverlay.addEventListener('click', function (e) { if (e.target === appOverlay) appOverlay.classList.remove('open'); });
-
-    document.getElementById('applicationForm').addEventListener('submit', function (e) {
-        e.preventDefault();
-        var form = e.target, btn = form.querySelector('button[type="submit"]');
-        btn.disabled = true;
-        fetch(form.action, { method: 'POST', body: new FormData(form) })
-            .then(function (r) { return r.json(); })
-            .then(function (data) {
-                btn.disabled = false;
-                if (data.success) {
-                    document.getElementById('applicationFormWrap').style.display = 'none';
-                    document.getElementById('applicationSuccess').style.display = 'block';
-                } else { alert(data.message || 'Something went wrong.'); }
-            });
-    });
-});
-</script>
-
-<?php require_once __DIR__ . '/includes/footer.php'; ?>
+<script src="/assets/js/main.js" defer></script>
+</body>
+</html>

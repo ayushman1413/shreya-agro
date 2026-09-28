@@ -1,4 +1,2 @@
-storage/resumes/*
-!storage/resumes/.gitkeep
 .DS_Store
-*.log
+Thumbs.db

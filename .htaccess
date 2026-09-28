@@ -4,38 +4,19 @@ RewriteEngine On
 RewriteCond %{HTTPS} off
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# Force non-www (pick ONE canonical host — update if you prefer www)
+# Force non-www (pick ONE canonical host — remove this block if you prefer www)
 RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
 RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
 
-# Remove trailing "index.php"
-RewriteCond %{THE_REQUEST} /index\.php[\s?] [NC]
-RewriteRule ^index\.php$ / [L,R=301]
-
-# ---- Clean URL routes ----
-RewriteRule ^about-us/?$ about-us.php [L,QSA]
-RewriteRule ^products/?$ products.php [L,QSA]
-RewriteRule ^products/([a-z0-9-]+)/?$ product.php?slug=$1 [L,QSA]
-RewriteRule ^contact-us/?$ contact-us.php [L,QSA]
-RewriteRule ^careers/?$ careers.php [L,QSA]
-RewriteRule ^sitemap\.xml$ sitemap.php [L]
-
-# Block direct .php access to files that should only be reached via the routes above
-RewriteCond %{THE_REQUEST} \s/+(about-us|products|contact-us|careers|product|sitemap)\.php [NC]
-RewriteRule ^ /? [L,R=301]
-
 # Custom 404
-ErrorDocument 404 /404.php
+ErrorDocument 404 /404.html
 
-# Basic hardening
+# No directory listings
 Options -Indexes
-<FilesMatch "\.(sql|log|md)$">
-    Require all denied
-</FilesMatch>
 
-# Compression & caching (performance doc: rule 20)
+# Compression & caching (performance rules from the SEO brief)
 <IfModule mod_deflate.c>
-    AddOutputFilterByType DEFLATE text/html text/css application/javascript text/javascript application/json
+    AddOutputFilterByType DEFLATE text/html text/css application/javascript text/javascript application/json image/svg+xml
 </IfModule>
 
 <IfModule mod_expires.c>
@@ -43,7 +24,7 @@ Options -Indexes
     ExpiresByType image/webp "access plus 1 year"
     ExpiresByType image/avif "access plus 1 year"
     ExpiresByType image/png "access plus 1 year"
-    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
     ExpiresByType text/css "access plus 1 month"
     ExpiresByType application/javascript "access plus 1 month"
 </IfModule>

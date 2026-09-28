@@ -1,54 +1,63 @@
 # Shreya Agro Foods — Website
 
-PHP + MySQL website for Shreya Agro Foods Ltd., built per the SEO/performance brief and homepage design mockup. B2B catalogue site (no cart/pricing) — every product and CTA funnels to enquiry forms.
+Fully static site for Shreya Agro Foods Ltd. — plain HTML/CSS/JS, no PHP, no database, no admin panel. Built per the SEO/performance brief and the approved homepage design mockup. B2B catalogue (no cart/pricing) — every product and CTA funnels to an enquiry form.
 
 ## Stack
 
-- Plain PHP (no framework) + MySQL (`mysqli`)
-- Vanilla JS (no frontend framework) — matches the "avoid heavy JS" performance rule
+- Plain HTML/CSS/JS — nothing to build, nothing to run server-side
 - Plus Jakarta Sans (UI/body) + Playfair Display (headings, matches the approved homepage mockup)
-- Clean URLs via `.htaccess` rewrite rules
+- Clean URLs via folder structure (`/products/mix-fruit-jam/index.html` → `/products/mix-fruit-jam/`) — no rewrite rules needed for routing
+- Forms submit to [Web3Forms](https://web3forms.com) (free, no backend needed) instead of a database
+
+## Before you deploy: set up form submissions
+
+There's no server to receive the enquiry/application forms, so they post directly to Web3Forms, which emails submissions to you.
+
+1. Go to [web3forms.com](https://web3forms.com) → enter your email → you'll instantly get a free **Access Key** (no account/signup needed).
+2. Find every `<input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">` in the HTML files and replace `YOUR_WEB3FORMS_ACCESS_KEY` with your real key. It appears in:
+   - `index.html`, `about-us/index.html`, `products/index.html`, `products/*/index.html` (product enquiry modal)
+   - `contact-us/index.html` (three forms: general enquiry, B2B modal, job application modal)
+3. Submissions will arrive by email to the address you registered with Web3Forms.
 
 ## Deploying on Hostinger (hPanel shared hosting)
 
-1. **Create the database**: hPanel → Databases → MySQL Databases → create a database + user, grant all privileges.
-2. **Import the schema**: open phpMyAdmin (linked from the same page) → select the new database → Import → upload `database/schema.sql`. This creates all tables and seeds the 12 product categories, 4 popular products, and 3 sample job openings shown in the design brief.
-3. **Set your DB credentials**: edit `config/config.php` and replace the `DB_HOST` / `DB_NAME` / `DB_USER` / `DB_PASS` defaults with the values hPanel gave you. Also update `SITE_URL`, `SITE_PHONE`, `SITE_EMAIL`.
-4. **Upload the files**: upload everything in this repo to `public_html` (File Manager or FTP).
-5. **Create your admin account**: visit `https://yourdomain.com/admin/setup.php` once — it only works while no admin account exists yet, then redirects to `/admin/login.php` from then on.
-6. **Force HTTPS + www/non-www**: already handled in `.htaccess` (redirects to non-www HTTPS — change the rule near the top if you prefer `www`).
+1. **Upload the files** — two options:
+   - **Git (recommended)**: hPanel → Advanced → Git → repository `https://github.com/saitmplacement/shreya-agro.git`, branch `main`, install path `public_html`.
+   - **Manual**: download the repo as a ZIP from GitHub → hPanel → File Manager → upload to `public_html` → extract.
+2. **Replace the Web3Forms access key** (see above) directly in File Manager, or do it before uploading.
+3. **SSL**: hPanel → SSL — usually auto-issued within minutes once your domain points to Hostinger.
+4. Visit `https://yourdomain.com/` — done. No database, no build step, no admin login required.
+
+## Updating content later
+
+Since there's no admin panel or database, content changes are direct file edits:
+- **Add/edit/remove a job opening**: edit the "Current Openings" section in `contact-us/index.html`.
+- **Add a product**: duplicate one of the `products/<slug>/index.html` files, update its content/meta tags, add a matching card to `products/index.html` and (if it should appear there) `index.html`, and add its URL to `sitemap.xml`.
+- **Edit categories, company info, phone/email**: search-and-replace across the HTML files (the phone number `+91 XXXXX XXXXX` and email are repeated in every page's footer/contact section).
 
 ## Replacing placeholder images
 
-Per the SEO brief, every image must be WebP, compressed, and descriptively named. This build ships with **layout placeholders** (no stock photography was available from the linked Drive folder at build time — the folder wasn't accessible to this session). To finish:
+Per the SEO brief, every image must be WebP, compressed, and descriptively named. This build ships with **layout placeholders** (text-only tiles) since no stock photography was available from the linked Drive folder at build time. To finish:
 
 1. Export/compress real product & category photos as WebP (100–300KB target).
-2. Name them exactly like the brief specifies, e.g. `shreya-agro-foods-mix-fruit-jam.webp`.
-3. Upload category images to `assets/images/categories/` and product images to `assets/images/products/`.
-4. Update each category/product's `image` / `main_image` column via the admin panel (products) or directly in the database (categories), or ask me to wire up an image-upload field in `admin/products.php`.
-5. The homepage hero also expects `assets/images/shreya-agro-foods-quality-facility.webp` — until it's uploaded, that section gracefully falls back to blank (see the `onerror` handler in `index.php`).
+2. Name them descriptively, e.g. `shreya-agro-foods-mix-fruit-jam.webp`.
+3. Save category images to `assets/images/categories/` and product images to `assets/images/products/`.
+4. In each page, replace the placeholder `<span>` tile inside `.thumb` / `.gallery-main` with an `<img>` tag pointing at the uploaded file (include `loading="lazy"` except on the homepage hero).
+5. The homepage also references `assets/images/shreya-agro-foods-quality-facility.webp` for the "Quality You Can Trust" section — upload it there, or the section gracefully collapses if it's missing (see the `onerror` handler in `index.html`).
 
-**Also missing from this push:** `assets/images/shreya-agro-foods-logo.png` (the brand logo) is a binary file that couldn't go through the API-based commit used to push this codebase. Upload it manually via GitHub's web UI (drag-and-drop into `assets/images/`) or add it on your next `git push` once direct git access is available — the code already references this exact filename everywhere.
+## SEO features already in place
 
-## Admin panel
-
-`/admin/` (protected, `noindex`) — manage products, careers (add/remove job openings — dynamic per the brief), and review incoming B2B enquiries and job applications (with resume download).
-
-## SEO features already wired up
-
-- Unique `<title>` + meta description + canonical URL per page (`includes/functions.php::seo_head()`)
+- Unique `<title>` + meta description + canonical URL on every page
 - One `<h1>` per page, proper H2/H3 hierarchy
-- Organization + WebSite schema (homepage), Product + BreadcrumbList schema (product pages)
-- `/sitemap.xml` generated dynamically from the database (excludes admin/thin/parameter URLs)
-- `/robots.txt` blocks `/admin/`, `/actions/`, `/storage/`, `/config/`, `/database/`
-- Custom 404 page with correct HTTP status
-- Lazy-loading on below-the-fold images (`loading="lazy"`), hero images load eagerly
-- Clean, lowercase, hyphenated URLs (`/products/product-name/`)
+- Organization + WebSite schema (homepage), Product + BreadcrumbList schema (each product page)
+- Static `/sitemap.xml` and `/robots.txt`
+- Custom 404 page (`404.html`, wired via `.htaccess`)
+- Lazy-loading on below-the-fold images, hero loads eagerly
+- Clean, lowercase, hyphenated URLs
 
 ## What's stubbed / needs your input
 
-- Real product photography (see above)
-- Brand logo file (see above)
-- `SITE_PHONE` placeholder — update in `config/config.php`
-- Social media links in the footer (`includes/footer.php`) currently point to `#`
-- Outbound email via PHP's `mail()` — works once the host's mail is configured; consider SMTP (PHPMailer) if deliverability matters
+- Real product & category photography (see above)
+- Web3Forms access key (see above) — **forms won't work until this is set**
+- Phone number placeholder `+91 XXXXX XXXXX` — find-and-replace across all pages
+- Social media links in every page's footer currently point to `#`

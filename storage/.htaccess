@@ -1,3 +1,0 @@
-# Resumes are private — only the admin panel (admin/download-resume.php) may read them.
-Require all denied
-Options -Indexes
