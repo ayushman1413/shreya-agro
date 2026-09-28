@@ -142,23 +142,23 @@ p { margin: 0 0 12px; color: var(--color-text-light); }
     position: relative;
     background-image: url('/assets/images/shreya-agro-foods-hero.webp');
     background-size: cover;
-    background-position: center 65%;
+    background-position: center 60%;
+    background-repeat: no-repeat;
     color: var(--color-text);
-    padding: 90px 0 70px;
+    padding: 70px 0;
+    min-height: 560px;
+    display: flex;
+    align-items: center;
     overflow: hidden;
 }
-.hero::before {
-    content: "";
-    position: absolute; inset: 0;
-    background: linear-gradient(90deg, rgba(253,250,240,0.96) 0%, rgba(253,250,240,0.82) 30%, rgba(253,250,240,0.35) 55%, rgba(20,57,42,0.08) 100%);
-}
-.hero .container { position: relative; z-index: 2; max-width: 600px; }
+.hero .container { position: relative; z-index: 2; width: 100%; }
+.hero-copy { max-width: 560px; text-align: left; }
 .hero h1 { color: var(--color-primary-dark); }
 .hero p.lead { color: var(--color-text-light); font-size: 1.05rem; max-width: 460px; }
 .hero .hero-actions { display: flex; gap: 14px; margin-top: 24px; flex-wrap: wrap; }
 
 .hero-badge {
-    position: absolute; top: 36px; right: 6%;
+    position: absolute; top: 8%; right: 6%;
     background: radial-gradient(circle at 30% 30%, #fbeec3, var(--color-gold));
     color: var(--color-primary-darker);
     border-radius: 50%;
@@ -172,9 +172,9 @@ p { margin: 0 0 12px; color: var(--color-text-light); }
 .hero-badge .label { font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; margin-top: 2px; }
 
 @media (max-width: 720px) {
-    .hero { padding: 60px 0 200px; background-position: 70% center; }
-    .hero::before { background: linear-gradient(180deg, rgba(253,250,240,0.97) 0%, rgba(253,250,240,0.9) 40%, rgba(253,250,240,0.55) 70%, rgba(253,250,240,0.2) 100%); }
-    .hero-badge { width: 84px; height: 84px; top: 18px; right: 18px; }
+    .hero { padding: 50px 0; min-height: 460px; background-position: 68% center; }
+    .hero-copy { max-width: 100%; }
+    .hero-badge { width: 84px; height: 84px; top: 16px; right: 16px; }
 }
 
 /* ---------- Section shells ---------- */
