@@ -59,5 +59,6 @@ If you add more products later, follow the same pattern: a square (800×800) Web
 
 - Syrups and Oils category photos (see above)
 - Web3Forms access key (see above) — **forms won't work until this is set**
-- Phone number placeholder `+91 XXXXX XXXXX` — find-and-replace across all pages
-- Social media links in every page's footer currently point to `#`
+- YouTube link in every footer still points to `#` (no channel provided yet)
+
+Real business details are wired in: registered office address (Goregaon East, Mumbai), phone `+91 70586 74452`, business hours (Contact page), and Facebook/Instagram/LinkedIn links in every footer + the homepage's Organization/LocalBusiness schema.
