@@ -145,9 +145,9 @@ p { margin: 0 0 12px; color: var(--color-text-light); }
 }
 @media (max-width: 520px) {
     .brand-text { display: flex; }
-    .brand-text .brand-name { font-size: 0.95rem; }
+    .brand-text .brand-name { font-size: 0.85rem; }
     .brand-text .brand-tagline { font-size: 0.6rem; }
-    .header-actions .btn-primary { display: none; }
+    .header-actions .btn-primary { display: block; padding: 6px 10px; font-size: 0.7rem; }
     .site-header .container { gap: 12px; padding-top: 10px; padding-bottom: 10px; }
     .brand img { height: 40px; }
     .main-nav { top: 60px; }
@@ -708,3 +708,16 @@ p { margin: 0 0 12px; color: var(--color-text-light); }
 /* 404 */
 .error-page { padding: 100px 0; text-align: center; }
 .error-page .btn-row { display: flex; gap: 14px; justify-content: center; margin-top: 24px; flex-wrap: wrap; }
+
+@media (max-width: 400px) {
+    .chatbot-panel {
+        width: calc(100% - 32px);
+        right: 16px;
+        left: 16px;
+        bottom: 80px;
+    }
+    .chatbot-toggle {
+        right: 16px;
+        bottom: 16px;
+    }
+}
