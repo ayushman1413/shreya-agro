@@ -1,17 +1,3 @@
-// Block all pages except Home with "Under Development" message
-if (window.location.pathname !== '/' && window.location.pathname !== '/index.html' && window.location.pathname !== '') {
-    document.addEventListener('DOMContentLoaded', function () {
-        document.body.innerHTML = `
-            <div style="display:flex; flex-direction:column; height:100vh; align-items:center; justify-content:center; text-align:center; padding:20px; background-color:var(--color-bg, #f7f9f4); color:var(--color-primary-dark, #14392a); font-family:var(--font-body, sans-serif);">
-                <div style="font-size:4rem; margin-bottom:10px;">🚧</div>
-                <h1 style="font-size: clamp(2rem, 4vw, 2.75rem); margin-bottom: 12px; font-family:var(--font-heading, serif);">Under Development</h1>
-                <p style="font-size: 1.1rem; color:var(--color-text-light, #5a5f57); margin-bottom: 24px; max-width:400px;">This page is currently being built. Please check back later!</p>
-                <a href="/" style="display:inline-block; padding: 13px 26px; background:var(--color-primary, #1f5d40); color:#fff; text-decoration:none; border-radius:999px; font-weight:600; font-size:0.95rem;">&larr; Go Back Home</a>
-            </div>
-        `;
-    });
-}
-
 document.addEventListener('DOMContentLoaded', function () {
     // Mobile nav toggle
     var navToggle = document.getElementById('navToggle');
