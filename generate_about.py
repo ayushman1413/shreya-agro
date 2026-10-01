@@ -1,4 +1,10 @@
-<!doctype html>
+import os
+
+def generate_about_page():
+    base_dir = "/Users/ayushman/Desktop/shreya-agro/about-us"
+    os.makedirs(base_dir, exist_ok=True)
+    
+    html_content = """<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -211,4 +217,12 @@
 
     <script src="/assets/js/main.js" defer></script>
 </body>
-</html>
+</html>"""
+    
+    with open(os.path.join(base_dir, "index.html"), "w", encoding="utf-8") as f:
+        f.write(html_content)
+        
+    print("About page generated successfully!")
+
+if __name__ == "__main__":
+    generate_about_page()
