@@ -1,3 +1,17 @@
+// Block all pages except Home with "Under Development" message
+if (window.location.pathname !== '/' && window.location.pathname !== '/index.html' && window.location.pathname !== '') {
+    document.addEventListener('DOMContentLoaded', function () {
+        document.body.innerHTML = `
+            <div style="display:flex; flex-direction:column; height:100vh; align-items:center; justify-content:center; text-align:center; padding:20px; background-color:var(--color-bg, #f7f9f4); color:var(--color-primary-dark, #14392a); font-family:var(--font-body, sans-serif);">
+                <div style="font-size:4rem; margin-bottom:10px;">🚧</div>
+                <h1 style="font-size: clamp(2rem, 4vw, 2.75rem); margin-bottom: 12px; font-family:var(--font-heading, serif);">Under Development</h1>
+                <p style="font-size: 1.1rem; color:var(--color-text-light, #5a5f57); margin-bottom: 24px; max-width:400px;">This page is currently being built. Please check back later!</p>
+                <a href="/" style="display:inline-block; padding: 13px 26px; background:var(--color-primary, #1f5d40); color:#fff; text-decoration:none; border-radius:999px; font-weight:600; font-size:0.95rem;">&larr; Go Back Home</a>
+            </div>
+        `;
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     // Mobile nav toggle
     var navToggle = document.getElementById('navToggle');
@@ -10,12 +24,62 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Chatbot toggle
+    // Chatbot logic
     var chatbotToggle = document.getElementById('chatbotToggle');
     var chatbotPanel = document.getElementById('chatbotPanel');
+    var chatCloseBtn = document.getElementById('chatCloseBtn');
+    var chatBody = document.getElementById('chatBody');
+    var chatInput = document.getElementById('chatInput');
+    var chatSendBtn = document.getElementById('chatSendBtn');
+
     if (chatbotToggle && chatbotPanel) {
         chatbotToggle.addEventListener('click', function () {
             chatbotPanel.classList.toggle('open');
+        });
+    }
+
+    if (chatCloseBtn) {
+        chatCloseBtn.addEventListener('click', function () {
+            chatbotPanel.classList.remove('open');
+        });
+    }
+
+    if (chatSendBtn && chatInput && chatBody) {
+        function sendMessage() {
+            var text = chatInput.value.trim();
+            if (!text) return;
+
+            // Add user message
+            var userMsg = document.createElement('div');
+            userMsg.className = 'chat-message user';
+            userMsg.innerHTML = '<div class="msg-bubble">' + text + '</div>';
+            chatBody.appendChild(userMsg);
+            chatInput.value = '';
+
+            // Scroll to bottom
+            chatBody.scrollTop = chatBody.scrollHeight;
+
+            // Show thinking
+            var thinkingMsg = document.createElement('div');
+            thinkingMsg.className = 'chat-message bot thinking-wrapper';
+            thinkingMsg.innerHTML = '<div class="msg-avatar">🤖</div><div class="msg-bubble"><div class="thinking-dots"><span></span><span></span><span></span></div></div>';
+            chatBody.appendChild(thinkingMsg);
+            chatBody.scrollTop = chatBody.scrollHeight;
+
+            // Fake reply after 1.5s
+            setTimeout(function () {
+                thinkingMsg.remove();
+                var botMsg = document.createElement('div');
+                botMsg.className = 'chat-message bot';
+                botMsg.innerHTML = '<div class="msg-avatar">🤖</div><div class="msg-bubble">Thanks for your message! As an AI, I am still learning. A human team member will contact you soon!</div>';
+                chatBody.appendChild(botMsg);
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }, 1500);
+        }
+
+        chatSendBtn.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') sendMessage();
         });
     }
 
