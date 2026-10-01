@@ -53,7 +53,7 @@
             </nav>
             <div class="header-actions">
                 <button class="search-toggle" id="searchToggle" aria-label="Search products">&#128269;</button>
-                <a href="/contact-us/?enquiry=Business%20Partnership" class="btn btn-primary">Enquire Now</a>
+                <button type="button" class="btn btn-primary js-open-enquiry" data-enquiry-type="Business Partnership">Enquire Now</button>
             </div>
         </div>
     </header>
@@ -252,18 +252,20 @@
         </div>
     </section>
 
-    <section class="cta-split">
-        <div class="visual" role="img" aria-label="Fresh spices and ingredients used in Shreya Agro Foods products">
-        </div>
-        <div class="content">
-            <span class="eyebrow">B2B Opportunities</span>
-            <h2>Bring <strong>Shreya</strong> to Your Market</h2>
-            <p>Partner with us for distribution and business opportunities.</p>
-            <div>
-                <a href="/contact-us/?enquiry=Business%20Partnership" class="btn btn-primary">Contact Us &rarr;</a>
+        <div class="container" style="padding: 60px 24px;">
+        <section class="cta-split" style="border-top: none; border-radius: 24px; overflow: hidden; box-shadow: 0 15px 35px rgba(20,40,25,0.08); min-height: 340px;">
+            <div class="visual" role="img" aria-label="Fresh spices and ingredients used in Shreya Agro Foods products" style="background-image: url('/assets/images/Shreya%20Sunrise%20Spice%20Collection.png'); background-position: center; min-height: 250px;">
             </div>
-        </div>
-    </section>
+            <div class="content" style="padding: 60px 4vw;">
+                <span class="eyebrow">B2B Opportunities</span>
+                <h2>Bring <strong>Shreya</strong> to Your Market</h2>
+                <p style="font-size: 1.1rem; max-width: 400px; margin: 0 auto 24px;">Partner with us for distribution and business opportunities across India and beyond.</p>
+                <div>
+                    <button type="button" class="btn btn-primary js-open-enquiry" data-enquiry-type="Business Partnership">Contact Us &rarr;</button>
+                </div>
+            </div>
+        </section>
+    </div>
 
     <footer class="site-footer">
         <div class="container">

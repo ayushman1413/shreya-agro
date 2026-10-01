@@ -124,11 +124,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
             productIdEl.value = productId || productName;
             enquiryTypeEl.value = enquiryType || 'Product Enquiry';
+            var h3El = document.querySelector('.modal-form-panel h3');
+            if (h3El) h3El.textContent = 'Product Enquiry';
         } else {
             productPanel.style.display = 'none';
             modalBox.classList.add('no-product-panel');
             productIdEl.value = productName || '';
             enquiryTypeEl.value = enquiryType || 'General Enquiry';
+            var h3El = document.querySelector('.modal-form-panel h3');
+            if (h3El) h3El.textContent = enquiryType || 'General Enquiry';
         }
         overlay.classList.add('open');
     }

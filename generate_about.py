@@ -111,7 +111,7 @@ def generate_about_page():
             </nav>
             <div class="header-actions">
                 <button class="search-toggle" id="searchToggle" aria-label="Search products">&#128269;</button>
-                <a href="/contact-us/?enquiry=Business%20Partnership" class="btn btn-primary">Enquire Now</a>
+                <button type="button" class="btn btn-primary js-open-enquiry" data-enquiry-type="Business Partnership">Enquire Now</button>
             </div>
         </div>
     </header>
@@ -243,7 +243,52 @@ def generate_about_page():
         <button class="cta-btn js-open-enquiry" data-enquiry-type="B2B Partnership">Make a B2B Enquiry</button>
     </section>
 
-    <script src="/assets/js/main.js" defer></script>
+    
+<div class="modal-overlay" id="enquiryModalOverlay">
+    <div class="modal-box modal-box-product" id="enquiryModalBox">
+        <button class="modal-close" id="enquiryModalClose" aria-label="Close">&times;</button>
+        <div class="modal-grid">
+            <div class="modal-product-panel" id="enquiryProductPanel" style="display:none;">
+                <div class="modal-product-image"><img id="enquiryProductImage" src="" alt=""></div>
+                <span class="modal-product-badge">Food Product</span>
+                <h3 id="enquiryProductTitle"></h3>
+                <p id="enquiryProductDesc"></p>
+                <div class="modal-trust-icons">
+                    <div class="trust-icon"><span>🌿</span>100% Natural Ingredients</div>
+                    <div class="trust-icon"><span>✅</span>No Artificial Colours</div>
+                    <div class="trust-icon"><span>📦</span>Hygienically Packed</div>
+                </div>
+                <div class="modal-pack-sizes" id="enquiryPackSizesWrap">
+                    <span class="pack-label">Available Pack Sizes</span>
+                    <div class="pack-pills" id="enquiryPackSizes"></div>
+                </div>
+            </div>
+            <div class="modal-form-panel">
+                <span class="modal-form-eyebrow">B2B Enquiry Only</span>
+                <h3>Product Enquiry</h3>
+                <p>Interested in our products? Fill in your details and our team will get back to you shortly.</p>
+                <div id="enquiryFormWrap">
+                    <form id="enquiryForm">
+                        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+                        <input type="hidden" name="subject" value="New Product Enquiry — Shreya Agro Foods">
+                        <input type="hidden" name="enquiry_type" id="enquiryType" value="Product Enquiry">
+                        <input type="hidden" name="product" id="enquiryProductId" value="">
+                        <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off">
+                        <div class="form-group"><label for="enq_name">Name *</label><input type="text" id="enq_name" name="name" placeholder="Enter your name" required></div>
+                        <div class="form-group"><label for="enq_location">Location / City *</label><input type="text" id="enq_location" name="location" placeholder="City / State" required></div>
+                        <div class="form-group"><label for="enq_mobile">Phone Number *</label><input type="tel" id="enq_mobile" name="mobile" placeholder="+91 XXXXX XXXXX" required></div>
+                        <div class="form-group"><label for="enq_requirement">Message (Optional)</label><textarea id="enq_requirement" name="requirement" placeholder="Tell us about your requirement"></textarea></div>
+                        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Send Enquiry</button>
+                        <p class="form-note">🔒 Your information is safe with us. We only use it to respond to your enquiry.</p>
+                    </form>
+                </div>
+                <div id="enquirySuccess" class="form-success" style="display:none;"><strong>Thank You! 🎉</strong><br>Your enquiry has been received successfully. Our B2B team will contact you shortly.</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/assets/js/main.js" defer></script>
 </body>
 </html>"""
     

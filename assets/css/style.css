@@ -106,6 +106,8 @@ p { margin: 0 0 12px; color: var(--color-text-light); }
     position: sticky;
     top: 0;
     z-index: 50;
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
 .site-header .container {
@@ -218,7 +220,7 @@ p { margin: 0 0 12px; color: var(--color-text-light); }
     gap: 20px;
 }
 @media (max-width: 900px) { .category-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 520px) { .category-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .category-grid { grid-template-columns: 1fr; } }
 
 .category-card {
     background: var(--color-white);
@@ -274,7 +276,14 @@ p { margin: 0 0 12px; color: var(--color-text-light); }
     gap: 20px;
 }
 @media (max-width: 900px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 520px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { 
+    .product-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; } 
+    .product-card { padding: 14px; }
+    .product-card h3 { font-size: 0.95rem; margin-bottom: 4px; }
+    .product-card .pack-sizes { font-size: 0.75rem; margin-bottom: 10px; }
+    .product-card .btn-link { font-size: 0.8rem; margin-bottom: 8px !important; }
+    .product-card .enquire-link { padding: 8px 10px; font-size: 0.8rem; }
+}
 
 .product-card {
     background: var(--color-white);
@@ -465,8 +474,9 @@ p { margin: 0 0 12px; color: var(--color-text-light); }
     display: flex; align-items: center; justify-content: center;
     font-size: 1.8rem; border: 2px solid var(--color-white); cursor: pointer;
     box-shadow: 0 8px 24px rgba(31,93,64,0.4); transition: transform 0.2s;
+    transform: translateZ(0); backface-visibility: hidden;
 }
-.chatbot-toggle:hover { transform: scale(1.05); }
+.chatbot-toggle:hover { transform: scale(1.05) translateZ(0); }
 .chatbot-toggle .status-dot {
     position: absolute; top: 4px; right: 10px;
     width: 10px; height: 10px; border-radius: 50%;
@@ -478,6 +488,7 @@ p { margin: 0 0 12px; color: var(--color-text-light); }
     box-shadow: 0 16px 40px rgba(0,0,0,0.15); overflow: hidden;
     display: none; flex-direction: column; border: 1px solid rgba(0,0,0,0.08);
     color: var(--color-text); font-family: var(--font-body);
+    transform: translateZ(0); backface-visibility: hidden;
 }
 .chatbot-panel.open { display: flex; }
 .chatbot-panel .chatbot-head { 
@@ -616,6 +627,10 @@ p { margin: 0 0 12px; color: var(--color-text-light); }
 }
 @media (max-width: 520px) {
     .modal-box { padding: 16px; }
+    .modal-product-panel, .modal-form-panel { padding: 12px; }
+    .modal-form-panel h3 { font-size: 1.15rem; }
+    .form-group input, .form-group select, .form-group textarea { padding: 8px 12px; font-size: 0.85rem; }
+    .modal-close { top: 10px; right: 10px; font-size: 1.1rem; }
 }
 
 /* ---------- Breadcrumbs ---------- */
