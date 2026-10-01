@@ -160,27 +160,28 @@ PRODUCT_TEMPLATE = """<!doctype html>
 </head>
 <body>
 <header class="site-header">
-    <div class="container">
-        <a href="/" class="brand">
-            <img src="/assets/images/shreya-agro-foods-logo.png" alt="Shreya Agro Foods logo" width="42" height="42">
-            <span class="brand-text">
-                <span class="brand-name" style="display:block;">Shreya Agro Foods Ltd.</span>
-                <span class="brand-tagline">Authentic Taste. Trusted Quality.</span>
-            </span>
-        </a>
-        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
-        <nav class="main-nav" id="mainNav">
-            <a href="/">Home</a>
-            <a href="/about-us/">About</a>
-            <a href="/products/" class="active">Products</a>
-            <a href="/contact-us/">Contact Us</a>
-        </nav>
-        <div class="header-actions">
-            <button class="search-toggle" id="searchToggle" aria-label="Search products">&#128269;</button>
-            <a href="/contact-us/?enquiry=Business%20Partnership" class="btn btn-primary">Enquire Now</a>
+        <div class="container">
+            <a href="/" class="brand">
+                <img src="/assets/images/shreya-agro-foods-logo.png" alt="Shreya Agro Foods logo" width="42"
+                    height="42">
+                <span class="brand-text">
+                    <span class="brand-name" style="display:block;">Shreya Agro Foods Ltd.</span>
+                    <span class="brand-tagline">Authentic Taste. Trusted Quality.</span>
+                </span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/" class="active">Home</a>
+                <a href="/about-us/">About</a>
+                <a href="/products/">Products</a>
+                <a href="/contact-us/">Contact Us</a>
+            </nav>
+            <div class="header-actions">
+                <button class="search-toggle" id="searchToggle" aria-label="Search products">&#128269;</button>
+                <a href="/contact-us/?enquiry=Business%20Partnership" class="btn btn-primary">Enquire Now</a>
+            </div>
         </div>
-    </div>
-</header>
+    </header>
 
 <div class="container" style="padding-top:100px; padding-bottom: 40px;">
     <div class="breadcrumb" style="margin-bottom:20px; font-size:14px; color:#666;">

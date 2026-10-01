@@ -24,10 +24,10 @@ def generate_about_page():
         body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--text-charcoal); background: var(--bg-color); }
         
         /* Hero Section */
-        .hero { position: relative; padding: 120px 20px; text-align: center; color: white; background: linear-gradient(rgba(26, 79, 46, 0.8), rgba(26, 79, 46, 0.8)), url('https://images.unsplash.com/photo-1595858117769-95fb425ba473?auto=format&fit=crop&q=80') center/cover; }
+        .hero { display: block !important; position: relative; padding: 120px 20px; text-align: center; color: white; background: linear-gradient(rgba(26, 79, 46, 0.8), rgba(26, 79, 46, 0.8)), url('/assets/images/Shreya Farm-to-Table Collection.png') center/cover; }
         .hero-label { font-size: 14px; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; color: var(--secondary-green); margin-bottom: 20px; display: block; }
-        .hero h1 { font-size: 48px; font-weight: 800; margin-bottom: 24px; }
-        .hero p { font-size: 20px; max-width: 800px; margin: 0 auto 40px; line-height: 1.6; }
+        .hero h1 { font-size: 48px; font-weight: 800; margin-bottom: 24px; color: white !important; }
+        .hero p { font-size: 20px; max-width: 800px; margin: 0 auto 40px; line-height: 1.6; color: white !important; }
         .hero .btn { background: var(--secondary-green); color: var(--primary-green); padding: 16px 32px; border-radius: 8px; font-weight: 700; text-decoration: none; margin: 0 10px; display: inline-block; transition: transform 0.3s ease; }
         .hero .btn:hover { transform: translateY(-3px); }
         .hero .btn-outline { background: transparent; border: 2px solid white; color: white; }
@@ -44,11 +44,17 @@ def generate_about_page():
         .stat-item p { font-size: 14px; font-weight: 600; text-transform: uppercase; }
 
         /* Vision & Mission */
-        .vm-section { padding: 100px 5%; display: flex; gap: 40px; flex-wrap: wrap; }
-        .vm-card { flex: 1; min-width: 300px; background: white; padding: 50px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center; border-bottom: 5px solid var(--secondary-green); transition: transform 0.3s; }
-        .vm-card:hover { transform: translateY(-10px); }
-        .vm-card h3 { font-size: 24px; color: var(--primary-green); margin-bottom: 20px; letter-spacing: 1px; }
-        .vm-card p { font-size: 18px; line-height: 1.6; }
+        .vm-section { padding: 80px 5%; display: flex; gap: 30px; flex-wrap: wrap; justify-content: center; background: var(--bg-color); }
+        .vm-card { flex: 1; min-width: 300px; max-width: 600px; padding: 60px 40px; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); text-align: center; color: white; position: relative; overflow: hidden; transition: transform 0.4s ease, box-shadow 0.4s ease; border: 1px solid rgba(255,255,255,0.1); }
+        .vm-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0,0,0,0.2); }
+        .vm-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(26, 79, 46, 0.85) 0%, rgba(17, 51, 30, 0.95) 100%); z-index: 1; }
+        .vm-card-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; filter: grayscale(20%); transition: transform 0.8s ease; }
+        .vm-card:hover .vm-card-bg { transform: scale(1.05); }
+        .vm-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; }
+        .vm-icon { width: 80px; height: 80px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); }
+        .vm-icon svg { width: 40px; height: 40px; fill: var(--secondary-green); }
+        .vm-card h3 { font-size: 28px; color: white; margin-bottom: 20px; letter-spacing: 2px; font-weight: 800; }
+        .vm-card p { font-size: 18px; line-height: 1.7; color: rgba(255,255,255,0.9); font-weight: 400; margin: 0; }
 
         /* Why Us */
         .why-section { padding: 100px 5%; background: white; text-align: center; }
@@ -59,17 +65,20 @@ def generate_about_page():
         .why-card h3 { font-size: 20px; color: var(--primary-green); margin-bottom: 15px; }
         
         /* Journey */
-        .journey-section { padding: 100px 5%; overflow-x: auto; background: var(--primary-green); color: white; text-align: center; }
-        .journey-section h2 { font-size: 36px; margin-bottom: 60px; color: var(--secondary-green); }
-        .timeline { display: flex; justify-content: center; gap: 50px; align-items: flex-start; flex-wrap: wrap; }
-        .timeline-item { width: 200px; text-align: center; position: relative; }
-        .timeline-item h3 { font-size: 48px; font-weight: 800; color: rgba(255,255,255,0.2); margin-bottom: 10px; }
-        .timeline-item h4 { font-size: 24px; color: var(--secondary-green); margin-bottom: 15px; }
+        .journey-section { padding: 100px 5%; overflow-x: auto; background: linear-gradient(135deg, #11331e 0%, #1a4f2e 100%); color: white; text-align: center; }
+        .journey-section h2 { font-size: 42px; margin-bottom: 60px; color: white !important; }
+        .journey-section h2 span { color: var(--secondary-green); }
+        .timeline { display: flex; justify-content: center; gap: 50px; align-items: stretch; flex-wrap: wrap; }
+        .timeline-item { width: 200px; text-align: center; position: relative; padding: 20px; background: rgba(255,255,255,0.03); border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: transform 0.3s; }
+        .timeline-item:hover { transform: translateY(-5px); background: rgba(255,255,255,0.06); }
+        .timeline-item h3 { font-size: 48px; font-weight: 800; background: linear-gradient(to right, #4ade80, #22c55e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; }
+        .timeline-item h4 { font-size: 22px; color: white; margin-bottom: 15px; font-weight: 600; }
+        .timeline-item p { color: rgba(255,255,255,0.8); font-size: 15px; line-height: 1.6; }
         
         /* Quality */
-        .quality-section { padding: 100px 5%; background: var(--primary-green); color: white; text-align: center; }
-        .quality-section h2 { font-size: 36px; margin-bottom: 24px; }
-        .quality-section p { font-size: 18px; max-width: 800px; margin: 0 auto 60px; line-height: 1.7; opacity: 0.9; }
+        .quality-section { padding: 100px 5%; background: linear-gradient(135deg, #1a4f2e 0%, #11331e 100%); color: white; text-align: center; }
+        .quality-section h2 { font-size: 42px; margin-bottom: 24px; color: var(--secondary-green) !important; }
+        .quality-section p { font-size: 18px; max-width: 800px; margin: 0 auto 60px; line-height: 1.7; color: rgba(255,255,255,0.9) !important; }
         .q-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
         .q-grid img { width: 100%; height: 250px; object-fit: cover; border-radius: 12px; }
 
@@ -84,17 +93,26 @@ def generate_about_page():
 <body>
 
     <header class="site-header">
-        <div class="container" style="display:flex; justify-content:space-between; align-items:center; padding: 20px 5%;">
-            <a href="/" class="brand" style="text-decoration:none; display:flex; align-items:center; gap:10px;">
-                <img src="/assets/images/shreya-agro-foods-logo.png" alt="Shreya Agro Foods" width="50">
-                <span style="font-weight:800; font-size:24px; color:var(--primary-green);">Shreya Agro</span>
+        <div class="container">
+            <a href="/" class="brand">
+                <img src="/assets/images/shreya-agro-foods-logo.png" alt="Shreya Agro Foods logo" width="42"
+                    height="42">
+                <span class="brand-text">
+                    <span class="brand-name" style="display:block;">Shreya Agro Foods Ltd.</span>
+                    <span class="brand-tagline">Authentic Taste. Trusted Quality.</span>
+                </span>
             </a>
-            <nav style="display:flex; gap:30px;">
-                <a href="/" style="text-decoration:none; color:var(--text-charcoal); font-weight:600;">Home</a>
-                <a href="/products/" style="text-decoration:none; color:var(--text-charcoal); font-weight:600;">Products</a>
-                <a href="/about-us/" style="text-decoration:none; color:var(--primary-green); font-weight:800;">About</a>
-                <a href="/contact-us/" style="text-decoration:none; color:var(--text-charcoal); font-weight:600;">Contact</a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/" class="active">Home</a>
+                <a href="/about-us/">About</a>
+                <a href="/products/">Products</a>
+                <a href="/contact-us/">Contact Us</a>
             </nav>
+            <div class="header-actions">
+                <button class="search-toggle" id="searchToggle" aria-label="Search products">&#128269;</button>
+                <a href="/contact-us/?enquiry=Business%20Partnership" class="btn btn-primary">Enquire Now</a>
+            </div>
         </div>
     </header>
 
@@ -110,7 +128,7 @@ def generate_about_page():
 
     <section class="intro-section">
         <div class="intro-img">
-            <img src="https://images.unsplash.com/photo-1621415065099-31ffb91a78ee?auto=format&fit=crop&q=80" alt="Shreya Agro Foods Factory" loading="lazy">
+            <img src="/assets/images/shreya-agro-foods-quality-facility.webp" alt="Shreya Agro Foods Factory" loading="lazy">
         </div>
         <div class="intro-content">
             <h2>A Legacy Built on Quality & Trust</h2>
@@ -135,14 +153,24 @@ def generate_about_page():
 
     <section class="vm-section">
         <div class="vm-card">
-            <span style="font-size:40px; margin-bottom:20px; display:block;">👁️</span>
-            <h3>OUR VISION</h3>
-            <p>To build a trusted FMCG brand that brings quality, innovation and value to consumers across India and beyond.</p>
+            <img src="/assets/images/Shreya Farm-to-Table Product Showcase.png" class="vm-card-bg" alt="Vision Background">
+            <div class="vm-content">
+                <div class="vm-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                </div>
+                <h3>OUR VISION</h3>
+                <p>To build a trusted FMCG brand that brings quality, innovation and value to consumers across India and beyond.</p>
+            </div>
         </div>
         <div class="vm-card">
-            <span style="font-size:40px; margin-bottom:20px; display:block;">🎯</span>
-            <h3>OUR MISSION</h3>
-            <p>To consistently deliver high-quality products while building lasting relationships with customers, partners and communities.</p>
+            <img src="/assets/images/products/Shreya Wheat Flour Kitchen Still Life-1.png" class="vm-card-bg" alt="Mission Background">
+            <div class="vm-content">
+                <div class="vm-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3-8c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3zm-3-1.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/><path d="M12 6c-3.31 0-6 2.69-6 6h2c0-2.21 1.79-4 4-4v-2zm0 12c3.31 0 6-2.69 6-6h-2c0 2.21-1.79 4-4 4v2z"/></svg>
+                </div>
+                <h3>OUR MISSION</h3>
+                <p>To consistently deliver high-quality products while building lasting relationships with customers, partners and communities.</p>
+            </div>
         </div>
     </section>
 
@@ -202,10 +230,10 @@ def generate_about_page():
         <h2>Quality Is at the Heart of Everything We Do</h2>
         <p>We believe quality is not just a standard — it is a responsibility. From raw material selection to manufacturing, packaging and distribution, we focus on maintaining consistent quality across every product.</p>
         <div class="q-grid">
-            <img src="https://images.unsplash.com/photo-1563124508-25f05df39f37?auto=format&fit=crop&w=500&q=80" alt="Manufacturing" loading="lazy">
-            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=500&q=80" alt="Quality Checking" loading="lazy">
-            <img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=500&q=80" alt="Packaging" loading="lazy">
-            <img src="https://images.unsplash.com/photo-1605338902581-2292f32a76f2?auto=format&fit=crop&w=500&q=80" alt="Finished Products" loading="lazy">
+            <img src="/assets/images/Shreya Sunrise Spice Collection.png" alt="Manufacturing" loading="lazy">
+            <img src="/assets/images/products/Shreya Wheat Flour Kitchen Still Life-1.png" alt="Quality Checking" loading="lazy">
+            <img src="/assets/images/products/Shreya Besan Chakki Ka Atta Package.png" alt="Packaging" loading="lazy">
+            <img src="/assets/images/products/Shreya Spice Powders Poster.png" alt="Finished Products" loading="lazy">
         </div>
     </section>
 

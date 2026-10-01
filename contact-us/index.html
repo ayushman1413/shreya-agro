@@ -18,83 +18,108 @@
         body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--text-charcoal); background: var(--bg-color); }
         
         /* Hero Section */
-        .hero { position: relative; padding: 120px 20px; text-align: center; color: white; background: linear-gradient(rgba(26, 79, 46, 0.8), rgba(26, 79, 46, 0.8)), url('https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80') center/cover; }
-        .hero h1 { font-size: 48px; font-weight: 800; margin-bottom: 24px; }
-        .hero p { font-size: 20px; max-width: 800px; margin: 0 auto 40px; line-height: 1.6; }
-        .hero .btn { background: var(--secondary-green); color: var(--primary-green); padding: 16px 32px; border-radius: 8px; font-weight: 700; text-decoration: none; margin: 0 10px; display: inline-block; transition: transform 0.3s ease; }
-        .hero .btn-outline { background: transparent; border: 2px solid white; color: white; }
+        .hero { display: block !important; position: relative; padding: 140px 20px; text-align: center; color: white; background: linear-gradient(135deg, rgba(26, 79, 46, 0.9), rgba(17, 51, 30, 0.95)), url('/assets/images/shreya-agro-foods-hero.webp') center/cover; }
+        .hero h1 { font-size: 52px; font-weight: 800; margin-bottom: 24px; color: white !important; }
+        .hero p { font-size: 20px; max-width: 800px; margin: 0 auto 40px; line-height: 1.6; color: rgba(255,255,255,0.9) !important; }
+        .hero .btn { background: var(--secondary-green); color: var(--primary-green); padding: 16px 36px; border-radius: 8px; font-weight: 800; text-decoration: none; margin: 0 10px; display: inline-block; transition: all 0.3s ease; box-shadow: 0 10px 20px rgba(74, 222, 128, 0.2); border: none; }
+        .hero .btn:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(74, 222, 128, 0.3); }
+        .hero .btn-outline { background: transparent; border: 2px solid rgba(255,255,255,0.3); color: white; box-shadow: none; }
+        .hero .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: white; }
 
         /* Contact Section */
-        .contact-section { display: flex; flex-wrap: wrap; padding: 100px 5%; background: white; gap: 60px; justify-content: space-between; }
-        .contact-info { flex: 1; min-width: 300px; }
-        .contact-info h2 { font-size: 36px; color: var(--primary-green); margin-bottom: 30px; }
-        .info-item { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 30px; }
-        .info-icon { font-size: 24px; }
-        .info-text h4 { font-size: 18px; margin-bottom: 5px; color: var(--primary-green); }
-        .info-text p { font-size: 16px; color: #555; }
+        .contact-section { display: flex; flex-wrap: wrap; padding: 100px 5%; background: var(--bg-color); gap: 60px; justify-content: center; align-items: flex-start; max-width: 1400px; margin: 0 auto; }
+        .contact-info { flex: 1; min-width: 340px; max-width: 500px; }
+        .contact-info h2 { font-size: 42px; color: var(--primary-green); margin-bottom: 20px; font-weight: 800; }
+        .contact-info > p { font-size: 18px; color: #555; line-height: 1.6; margin-bottom: 40px; }
         
-        .contact-form-wrapper { flex: 1; min-width: 300px; background: var(--bg-color); padding: 40px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .contact-form-wrapper h3 { font-size: 28px; margin-bottom: 24px; color: var(--primary-green); }
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 14px; }
-        .form-control { width: 100%; padding: 12px 16px; border: 1px solid #ccc; border-radius: 8px; font-family: inherit; font-size: 16px; }
-        .submit-btn { width: 100%; padding: 16px; background: var(--primary-green); color: white; border: none; border-radius: 8px; font-size: 18px; font-weight: 700; cursor: pointer; transition: background 0.3s; }
-        .submit-btn:hover { background: #123820; }
+        .info-card { display: flex; align-items: flex-start; gap: 20px; padding: 24px; background: white; border-radius: 16px; margin-bottom: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.03); transition: transform 0.3s ease; }
+        .info-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.06); }
+        .info-icon { width: 54px; height: 54px; background: #eef2eb; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .info-icon svg { width: 24px; height: 24px; fill: var(--primary-green); }
+        .info-text h4 { font-size: 18px; margin-bottom: 6px; color: var(--primary-green); font-weight: 700; }
+        .info-text p { font-size: 16px; color: #666; margin: 0; line-height: 1.5; }
+        
+        .contact-form-wrapper { flex: 1; min-width: 340px; max-width: 700px; background: white; padding: 50px; border-radius: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.02); }
+        .contact-form-wrapper h3 { font-size: 32px; margin-bottom: 10px; color: var(--primary-green); font-weight: 800; }
+        .contact-form-wrapper > p { color: #666; margin-bottom: 30px; font-size: 16px; }
+        .form-group { margin-bottom: 24px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 15px; color: var(--primary-green); }
+        .form-control { width: 100%; padding: 14px 18px; border: 2px solid #eef2eb; border-radius: 12px; font-family: inherit; font-size: 16px; transition: border-color 0.3s ease, box-shadow 0.3s ease; background: #fbfdf9; box-sizing: border-box; }
+        .form-control:focus { outline: none; border-color: var(--secondary-green); box-shadow: 0 0 0 4px rgba(74, 222, 128, 0.1); background: white; }
+        .submit-btn { width: 100%; padding: 18px; background: linear-gradient(135deg, var(--primary-green), #11331e); color: white; border: none; border-radius: 12px; font-size: 18px; font-weight: 800; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 10px 20px rgba(26, 79, 46, 0.2); }
+        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 15px 30px rgba(26, 79, 46, 0.3); }
 
         /* B2B Banner */
-        .b2b-banner { padding: 80px 5%; background: var(--primary-green); color: white; text-align: center; }
-        .b2b-banner h2 { font-size: 36px; margin-bottom: 20px; color: var(--secondary-green); }
-        .b2b-banner p { font-size: 20px; margin-bottom: 30px; opacity: 0.9; }
-        .b2b-banner .btn { background: white; color: var(--primary-green); padding: 16px 32px; border-radius: 8px; font-weight: 700; text-decoration: none; display: inline-block; }
+        .b2b-banner { padding: 100px 5%; background: linear-gradient(135deg, #1a4f2e 0%, #11331e 100%); color: white; text-align: center; }
+        .b2b-banner h2 { font-size: 42px; margin-bottom: 24px; color: white; font-weight: 800; }
+        .b2b-banner h2 span { color: var(--secondary-green); }
+        .b2b-banner p { font-size: 20px; max-width: 800px; margin: 0 auto 40px; color: rgba(255,255,255,0.9); line-height: 1.6; }
+        .b2b-banner .btn { background: var(--secondary-green); color: var(--primary-green); padding: 18px 40px; border-radius: 12px; font-weight: 800; font-size: 18px; text-decoration: none; display: inline-block; transition: transform 0.3s; }
+        .b2b-banner .btn:hover { transform: translateY(-3px); }
 
         /* Careers Section */
-        .careers-intro { padding: 100px 5% 50px; text-align: center; background: #eef2eb; }
-        .careers-intro h2 { font-size: 36px; color: var(--primary-green); margin-bottom: 20px; }
-        .careers-intro p { font-size: 18px; max-width: 700px; margin: 0 auto; color: #555; line-height: 1.6; }
+        .careers-intro { padding: 100px 5% 60px; text-align: center; background: white; }
+        .careers-intro h2 { font-size: 42px; color: var(--primary-green); margin-bottom: 20px; font-weight: 800; }
+        .careers-intro p { font-size: 20px; max-width: 800px; margin: 0 auto; color: #555; line-height: 1.6; }
 
         /* Why Work With Us */
-        .why-work { padding: 50px 5% 100px; background: #eef2eb; }
-        .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; }
-        .why-card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; }
-        .why-icon { font-size: 40px; margin-bottom: 15px; }
-        .why-card h3 { font-size: 20px; color: var(--primary-green); margin-bottom: 10px; }
+        .why-work { padding: 0 5% 100px; background: white; max-width: 1400px; margin: 0 auto; }
+        .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .why-card { background: #fbfdf9; padding: 40px 30px; border-radius: 20px; border: 1px solid #eef2eb; text-align: center; transition: transform 0.3s, box-shadow 0.3s; }
+        .why-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.05); background: white; }
+        .why-icon { width: 70px; height: 70px; background: #eef2eb; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
+        .why-icon svg { width: 32px; height: 32px; fill: var(--primary-green); }
+        .why-card h3 { font-size: 22px; color: var(--primary-green); margin-bottom: 12px; font-weight: 800; }
+        .why-card p { color: #666; line-height: 1.6; margin: 0; }
 
         /* Current Openings */
-        .openings-section { padding: 100px 5%; background: white; }
-        .openings-section h2 { font-size: 36px; color: var(--primary-green); margin-bottom: 40px; text-align: center; }
-        .job-card { display: flex; justify-content: space-between; align-items: center; padding: 30px; border: 1px solid #eee; border-radius: 12px; margin-bottom: 20px; transition: box-shadow 0.3s; flex-wrap: wrap; gap: 20px; }
-        .job-card:hover { box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-        .job-info h3 { font-size: 24px; margin-bottom: 10px; }
-        .job-meta { color: #666; font-size: 15px; display: flex; gap: 15px; }
-        .job-card .btn { padding: 12px 24px; background: var(--secondary-green); color: var(--primary-green); font-weight: 700; border-radius: 6px; text-decoration: none; border: none; cursor: pointer; }
+        .openings-section { padding: 100px 5%; background: var(--bg-color); }
+        .openings-wrapper { max-width: 1000px; margin: 0 auto; }
+        .openings-section h2 { font-size: 42px; color: var(--primary-green); margin-bottom: 40px; text-align: center; font-weight: 800; }
+        .job-card { display: flex; justify-content: space-between; align-items: center; padding: 35px 40px; background: white; border: 1px solid rgba(0,0,0,0.03); border-radius: 16px; margin-bottom: 24px; transition: transform 0.3s, box-shadow 0.3s; flex-wrap: wrap; gap: 24px; box-shadow: 0 5px 15px rgba(0,0,0,0.02); }
+        .job-card:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0,0,0,0.06); }
+        .job-info h3 { font-size: 26px; margin-bottom: 12px; color: var(--primary-green); font-weight: 800; }
+        .job-meta { color: #666; font-size: 16px; display: flex; gap: 20px; font-weight: 500; }
+        .job-meta span { display: flex; align-items: center; gap: 6px; }
+        .job-card .btn { padding: 14px 28px; background: var(--secondary-green); color: var(--primary-green); font-weight: 800; font-size: 16px; border-radius: 10px; text-decoration: none; border: none; cursor: pointer; transition: transform 0.3s; }
+        .job-card .btn:hover { transform: translateY(-2px); }
 
         /* Map Section */
-        .map-section { width: 100%; height: 500px; background: #ddd; }
-        .map-section iframe { width: 100%; height: 100%; border: none; }
+        .map-section { width: 100%; height: 550px; background: #ddd; position: relative; }
+        .map-section iframe { width: 100%; height: 100%; border: none; filter: contrast(1.1) brightness(0.95); }
 
         /* Modal Styles */
-        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); overflow: auto; }
-        .modal-content { background-color: white; margin: 5% auto; padding: 40px; border-radius: 16px; width: 90%; max-width: 600px; position: relative; }
-        .close-modal { position: absolute; right: 20px; top: 15px; font-size: 28px; font-weight: bold; cursor: pointer; color: #aaa; }
-        .close-modal:hover { color: #333; }
+        .modal { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(26, 79, 46, 0.8); backdrop-filter: blur(5px); overflow: auto; }
+        .modal-content { background-color: white; margin: 5% auto; padding: 50px; border-radius: 24px; width: 90%; max-width: 650px; position: relative; box-shadow: 0 25px 50px rgba(0,0,0,0.2); }
+        .close-modal { position: absolute; right: 25px; top: 20px; font-size: 32px; font-weight: 400; cursor: pointer; color: #999; transition: color 0.3s; }
+        .close-modal:hover { color: var(--primary-green); }
         .success-msg { display: none; text-align: center; padding: 40px 20px; }
-        .success-msg h3 { color: var(--primary-green); font-size: 28px; margin-bottom: 15px; }
+        .success-msg h3 { color: var(--primary-green); font-size: 32px; margin-bottom: 15px; font-weight: 800; }
     </style>
 </head>
 <body>
 
     <header class="site-header">
-        <div class="container" style="display:flex; justify-content:space-between; align-items:center; padding: 20px 5%;">
-            <a href="/" class="brand" style="text-decoration:none; display:flex; align-items:center; gap:10px;">
-                <img src="/assets/images/shreya-agro-foods-logo.png" alt="Shreya Agro Foods" width="50">
-                <span style="font-weight:800; font-size:24px; color:var(--primary-green);">Shreya Agro</span>
+        <div class="container">
+            <a href="/" class="brand">
+                <img src="/assets/images/shreya-agro-foods-logo.png" alt="Shreya Agro Foods logo" width="42"
+                    height="42">
+                <span class="brand-text">
+                    <span class="brand-name" style="display:block;">Shreya Agro Foods Ltd.</span>
+                    <span class="brand-tagline">Authentic Taste. Trusted Quality.</span>
+                </span>
             </a>
-            <nav style="display:flex; gap:30px;">
-                <a href="/" style="text-decoration:none; color:var(--text-charcoal); font-weight:600;">Home</a>
-                <a href="/products/" style="text-decoration:none; color:var(--text-charcoal); font-weight:600;">Products</a>
-                <a href="/about-us/" style="text-decoration:none; color:var(--text-charcoal); font-weight:600;">About</a>
-                <a href="/contact-us/" style="text-decoration:none; color:var(--primary-green); font-weight:800;">Contact</a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/" class="active">Home</a>
+                <a href="/about-us/">About</a>
+                <a href="/products/">Products</a>
+                <a href="/contact-us/" class="active">Contact Us</a>
             </nav>
+            <div class="header-actions">
+                <button class="search-toggle" id="searchToggle" aria-label="Search products">&#128269;</button>
+                <a href="/contact-us/?enquiry=Business%20Partnership" class="btn btn-primary">Enquire Now</a>
+            </div>
         </div>
     </header>
 
@@ -102,7 +127,7 @@
         <h1>Let's Connect</h1>
         <p>Whether you're looking for a business partnership, product enquiry, distribution opportunity or career with us, we'd love to hear from you.</p>
         <div>
-            <a href="#contact-form" class="btn">Make a B2B Enquiry</a>
+            <a href="#contact-form" class="btn">Make an Enquiry</a>
             <a href="#careers" class="btn btn-outline">View Careers</a>
         </div>
     </section>
@@ -110,155 +135,164 @@
     <section class="contact-section">
         <div class="contact-info">
             <h2>Get in Touch</h2>
-            <div class="info-item">
-                <div class="info-icon">📍</div>
+            <p>Our team is ready to answer your questions. Fill out the form or reach out directly via phone or email.</p>
+            
+            <div class="info-card">
+                <div class="info-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                </div>
                 <div class="info-text">
-                    <h4>Our Office</h4>
-                    <p>Mumbai, Maharashtra, India</p>
+                    <h4>Corporate Office</h4>
+                    <p>411-412, Mastermind Rd, Royal Palms, Aarey Milk Colony, Goregaon East, Mumbai, Maharashtra 400065</p>
                 </div>
             </div>
-            <div class="info-item">
-                <div class="info-icon">📞</div>
+            
+            <div class="info-card">
+                <div class="info-icon">
+                    <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+                </div>
                 <div class="info-text">
                     <h4>Phone</h4>
-                    <p>+91 98765 43210</p>
+                    <p>+91 70586 74452</p>
                 </div>
             </div>
-            <div class="info-item">
-                <div class="info-icon">✉️</div>
+            
+            <div class="info-card">
+                <div class="info-icon">
+                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                </div>
                 <div class="info-text">
                     <h4>Email</h4>
                     <p>info@shreyaagrofoods.com</p>
                 </div>
             </div>
-            <div style="margin-top: 50px; padding-top: 30px; border-top: 1px solid #eee;">
-                <h4 style="font-size: 20px; color: var(--primary-green); margin-bottom: 10px;">Business Enquiries</h4>
-                <p style="color: #666; line-height: 1.6;">For products, distribution and partnerships.</p>
-            </div>
         </div>
         
         <div class="contact-form-wrapper" id="contact-form">
-            <h3>Send Us an Enquiry</h3>
-            <form onsubmit="event.preventDefault(); alert('Enquiry Submitted!');">
+            <h3>Send Us a Message</h3>
+            <p>Fill out the form below and we'll get back to you within 24 hours.</p>
+            <form onsubmit="event.preventDefault(); document.getElementById('contact-form').innerHTML = '<div style=\'text-align:center; padding:50px 20px;\'><h3 style=\'font-size:32px; color:var(--primary-green); margin-bottom:15px;\'>Thank You! 🎉</h3><p style=\'font-size:18px; color:#666; line-height:1.6;\'>Your enquiry has been submitted successfully. A member of our team will contact you shortly.</p></div>';">
                 <div class="form-group">
                     <label>Name*</label>
-                    <input type="text" class="form-control" placeholder="Enter your name" required>
+                    <input type="text" class="form-control" placeholder="Enter your full name" required>
                 </div>
                 <div class="form-group">
-                    <label>Company Name</label>
-                    <input type="text" class="form-control" placeholder="Enter company name">
+                    <label>Company Name (Optional)</label>
+                    <input type="text" class="form-control" placeholder="Enter your company name">
                 </div>
-                <div style="display:flex; gap:20px;">
-                    <div class="form-group" style="flex:1;">
+                <div style="display:flex; gap:20px; flex-wrap:wrap;">
+                    <div class="form-group" style="flex:1; min-width: 200px;">
                         <label>Mobile Number*</label>
                         <input type="tel" class="form-control" placeholder="Enter mobile number" required>
                     </div>
-                    <div class="form-group" style="flex:1;">
-                        <label>Email</label>
-                        <input type="email" class="form-control" placeholder="Enter email address">
+                    <div class="form-group" style="flex:1; min-width: 200px;">
+                        <label>Email Address*</label>
+                        <input type="email" class="form-control" placeholder="Enter email address" required>
                     </div>
                 </div>
-                <div style="display:flex; gap:20px;">
-                    <div class="form-group" style="flex:1;">
+                <div style="display:flex; gap:20px; flex-wrap:wrap;">
+                    <div class="form-group" style="flex:1; min-width: 200px;">
                         <label>Location*</label>
                         <input type="text" class="form-control" placeholder="City / State" required>
                     </div>
-                    <div class="form-group" style="flex:1;">
+                    <div class="form-group" style="flex:1; min-width: 200px;">
                         <label>Enquiry Type</label>
                         <select class="form-control">
                             <option>Product Enquiry</option>
                             <option>B2B / Wholesale</option>
-                            <option>Distribution</option>
-                            <option>Business Partnership</option>
-                            <option>General Enquiry</option>
-                            <option>Career</option>
+                            <option>Distribution Partner</option>
+                            <option>Export Enquiry</option>
+                            <option>Other Business Enquiry</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Message</label>
-                    <textarea class="form-control" rows="4" placeholder="Tell us how we can help you..."></textarea>
+                    <label>Message / Details*</label>
+                    <textarea class="form-control" rows="4" placeholder="Tell us exactly how we can help you..." required></textarea>
                 </div>
-                <button type="submit" class="submit-btn">Submit Enquiry</button>
+                <button type="submit" class="submit-btn">Send Message &rarr;</button>
             </form>
         </div>
     </section>
 
     <section class="b2b-banner">
-        <h2>Looking for a Long-Term FMCG Partner?</h2>
-        <p>Connect with Shreya Agro Foods for B2B, wholesale, distribution and business opportunities.</p>
-        <a href="#contact-form" class="btn js-open-enquiry" data-enquiry-type="B2B Partnership">Become a B2B Partner &rarr;</a>
+        <h2>Looking for a <span>Long-Term</span> FMCG Partner?</h2>
+        <p>Shreya Agro Foods is actively expanding its distribution network. Connect with us for high-margin B2B, wholesale, and exclusive distribution opportunities across India.</p>
+        <a href="#contact-form" class="btn js-open-enquiry" data-enquiry-type="B2B Partnership">Become a Distributor Today</a>
     </section>
 
     <section class="careers-intro" id="careers">
-        <h2>Build Your Career With Shreya Agro Foods</h2>
-        <p>We are always looking for passionate, talented and motivated people who want to grow with a growing FMCG organization. Explore opportunities. Grow with us. Make an impact.</p>
+        <h2>Build Your Career With Us</h2>
+        <p>We are always looking for passionate, talented and motivated people who want to grow with a rapidly expanding FMCG organization. Explore opportunities, grow your skills, and make a real impact.</p>
     </section>
 
     <section class="why-work">
         <div class="why-grid">
             <div class="why-card">
-                <div class="why-icon">🌱</div>
-                <h3>Growth</h3>
-                <p>Opportunities to learn, develop and grow.</p>
+                <div class="why-icon">
+                    <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                </div>
+                <h3>Great Culture</h3>
+                <p>Work with a collaborative team that truly values new ideas and teamwork.</p>
             </div>
             <div class="why-card">
-                <div class="why-icon">🤝</div>
-                <h3>Collaboration</h3>
-                <p>Work with a team that values ideas and teamwork.</p>
+                <div class="why-icon">
+                    <svg viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>
+                </div>
+                <h3>Rapid Growth</h3>
+                <p>Abundant opportunities to learn, develop your skills, and climb the ladder.</p>
             </div>
             <div class="why-card">
-                <div class="why-icon">💡</div>
+                <div class="why-icon">
+                    <svg viewBox="0 0 24 24"><path d="M9 21c0 .5.4 1 1 1h4c.6 0 1-.5 1-1v-1H9v1zm3-19C8.1 2 5 5.1 5 9c0 2.4 1.2 4.5 3 5.7V17c0 .5.4 1 1 1h6c.6 0 1-.5 1-1v-2.3c1.8-1.3 3-3.4 3-5.7 0-3.9-3.1-7-7-7z"/></svg>
+                </div>
                 <h3>Innovation</h3>
-                <p>Be part of a company continuously evolving with the market.</p>
-            </div>
-            <div class="why-card">
-                <div class="why-icon">🚀</div>
-                <h3>Opportunity</h3>
-                <p>Build your career in a growing FMCG environment.</p>
+                <p>Be part of a modern company continuously evolving with market trends.</p>
             </div>
         </div>
     </section>
 
     <section class="openings-section">
-        <h2>Current Openings</h2>
-        
-        <div class="job-card">
-            <div class="job-info">
-                <h3>Sales & Business Development Executive</h3>
-                <div class="job-meta">
-                    <span>📍 Mumbai</span>
-                    <span>💼 Full Time</span>
+        <div class="openings-wrapper">
+            <h2>Current Openings</h2>
+            
+            <div class="job-card">
+                <div class="job-info">
+                    <h3>Area Sales Manager (ASM)</h3>
+                    <div class="job-meta">
+                        <span><svg width="18" height="18" viewBox="0 0 24 24" fill="#1a4f2e"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> Mumbai / Pune</span>
+                        <span><svg width="18" height="18" viewBox="0 0 24 24" fill="#1a4f2e"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg> Full Time</span>
+                    </div>
                 </div>
+                <button class="btn js-apply-btn" data-job="Area Sales Manager (ASM)">Apply Now &rarr;</button>
             </div>
-            <button class="btn js-apply-btn" data-job="Sales & Business Development Executive">View Details &rarr;</button>
-        </div>
-        
-        <div class="job-card">
-            <div class="job-info">
-                <h3>Marketing Executive</h3>
-                <div class="job-meta">
-                    <span>📍 Mumbai</span>
-                    <span>💼 Full Time</span>
+            
+            <div class="job-card">
+                <div class="job-info">
+                    <h3>Marketing Executive</h3>
+                    <div class="job-meta">
+                        <span><svg width="18" height="18" viewBox="0 0 24 24" fill="#1a4f2e"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> Mumbai HQ</span>
+                        <span><svg width="18" height="18" viewBox="0 0 24 24" fill="#1a4f2e"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg> Full Time</span>
+                    </div>
                 </div>
+                <button class="btn js-apply-btn" data-job="Marketing Executive">Apply Now &rarr;</button>
             </div>
-            <button class="btn js-apply-btn" data-job="Marketing Executive">View Details &rarr;</button>
-        </div>
-        
-        <div class="job-card">
-            <div class="job-info">
-                <h3>Accounts Executive</h3>
-                <div class="job-meta">
-                    <span>📍 Mumbai</span>
-                    <span>💼 Full Time</span>
+            
+            <div class="job-card">
+                <div class="job-info">
+                    <h3>Senior Accounts Executive</h3>
+                    <div class="job-meta">
+                        <span><svg width="18" height="18" viewBox="0 0 24 24" fill="#1a4f2e"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> Mumbai HQ</span>
+                        <span><svg width="18" height="18" viewBox="0 0 24 24" fill="#1a4f2e"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg> Full Time</span>
+                    </div>
                 </div>
+                <button class="btn js-apply-btn" data-job="Senior Accounts Executive">Apply Now &rarr;</button>
             </div>
-            <button class="btn js-apply-btn" data-job="Accounts Executive">View Details &rarr;</button>
         </div>
     </section>
     
     <section class="map-section">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241316.6433258416!2d72.7410999553648!3d19.082522321482813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c6306644edc1%3A0x5da4ed8f8d648c69!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1690000000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3768.8475283431693!2d72.8805904!3d19.1581622!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b794101ccf07%3A0xe1db0dd84c68ff8!2sRoyal%20Palms%2C%20Aarey%20Milk%20Colony%2C%20Goregaon%2C%20Mumbai%2C%20Maharashtra%20400065!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </section>
 
     <!-- Career Application Modal -->
@@ -266,49 +300,49 @@
         <div class="modal-content">
             <span class="close-modal">&times;</span>
             <div id="applicationFormContainer">
-                <h3 style="font-size:24px; color:var(--primary-green); margin-bottom:20px;">Apply for this Position</h3>
-                <p style="margin-bottom:20px; font-weight:600; color:#555;">Position: <span id="jobTitleSpan"></span></p>
+                <h3 style="font-size:32px; color:var(--primary-green); margin-bottom:8px; font-weight:800;">Join Our Team</h3>
+                <p style="margin-bottom:30px; font-weight:500; color:#666; font-size:18px;">Applying for: <strong id="jobTitleSpan" style="color:var(--primary-green);"></strong></p>
                 <form id="careerForm">
                     <div class="form-group">
                         <label>Full Name*</label>
-                        <input type="text" class="form-control" required placeholder="Enter your name">
+                        <input type="text" class="form-control" required placeholder="Enter your full name">
                     </div>
-                    <div style="display:flex; gap:20px;">
-                        <div class="form-group" style="flex:1;">
+                    <div style="display:flex; gap:20px; flex-wrap:wrap;">
+                        <div class="form-group" style="flex:1; min-width:200px;">
                             <label>Mobile Number*</label>
                             <input type="tel" class="form-control" required placeholder="Enter mobile number">
                         </div>
-                        <div class="form-group" style="flex:1;">
-                            <label>Email*</label>
+                        <div class="form-group" style="flex:1; min-width:200px;">
+                            <label>Email Address*</label>
                             <input type="email" class="form-control" required placeholder="Enter email">
                         </div>
                     </div>
-                    <div style="display:flex; gap:20px;">
-                        <div class="form-group" style="flex:1;">
+                    <div style="display:flex; gap:20px; flex-wrap:wrap;">
+                        <div class="form-group" style="flex:1; min-width:200px;">
                             <label>Current Location*</label>
-                            <input type="text" class="form-control" required placeholder="City">
+                            <input type="text" class="form-control" required placeholder="City / State">
                         </div>
-                        <div class="form-group" style="flex:1;">
+                        <div class="form-group" style="flex:1; min-width:200px;">
                             <label>Experience</label>
-                            <input type="text" class="form-control" placeholder="Years of experience">
+                            <input type="text" class="form-control" placeholder="e.g. 3 Years">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Resume*</label>
-                        <input type="file" class="form-control" accept=".pdf,.doc,.docx" required>
-                        <small style="color:#666;">Upload PDF / DOC</small>
+                        <label>Resume / CV*</label>
+                        <input type="file" class="form-control" accept=".pdf,.doc,.docx" style="padding:10px; background: white;" required>
+                        <small style="color:#666; display:block; margin-top:6px;">Upload PDF or DOC (Max 5MB)</small>
                     </div>
                     <div class="form-group">
-                        <label>Message</label>
-                        <textarea class="form-control" rows="3" placeholder="Tell us briefly about yourself..."></textarea>
+                        <label>Why are you a good fit?</label>
+                        <textarea class="form-control" rows="3" placeholder="Tell us briefly about your relevant experience..."></textarea>
                     </div>
-                    <button type="submit" class="submit-btn">Submit Application</button>
+                    <button type="submit" class="submit-btn" style="margin-top:10px;">Submit Application</button>
                 </form>
             </div>
             <div id="applicationSuccess" class="success-msg">
-                <h3>Application Submitted Successfully! 🎉</h3>
-                <p style="color:#555; line-height:1.6; font-size:18px;">Thank you for your interest in joining Shreya Agro Foods. Our team will review your application and contact you if your profile matches an available opportunity.</p>
-                <button class="btn close-success" style="margin-top:20px; padding:12px 24px; background:var(--primary-green); color:white; border:none; border-radius:6px; cursor:pointer;">Close</button>
+                <h3 style="font-size:36px;">Application Received! 🎉</h3>
+                <p style="color:#666; line-height:1.7; font-size:18px;">Thank you for your interest in joining Shreya Agro Foods. Our HR team will carefully review your profile and reach out if there is a fit.</p>
+                <button class="btn close-success submit-btn" style="margin-top:30px; max-width:200px;">Close Window</button>
             </div>
         </div>
     </div>
@@ -347,6 +381,41 @@
             e.preventDefault();
             formContainer.style.display = "none";
             successContainer.style.display = "block";
+        });
+
+        // Enquiry Logic
+        const enquirySelect = document.querySelector('.contact-form-wrapper select');
+        
+        // Handle URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const enquiryParam = urlParams.get('enquiry');
+        if (enquiryParam && enquirySelect) {
+            // Find and set the option
+            Array.from(enquirySelect.options).forEach(opt => {
+                if (opt.value.includes(enquiryParam) || enquiryParam.includes(opt.value)) {
+                    opt.selected = true;
+                }
+            });
+            // Auto scroll to form
+            setTimeout(() => {
+                const formEl = document.getElementById('contact-form');
+                if(formEl) formEl.scrollIntoView({behavior: 'smooth', block: 'start'});
+            }, 500);
+        }
+
+        // Handle on-page .js-open-enquiry buttons
+        const enquiryBtns = document.querySelectorAll('.js-open-enquiry');
+        enquiryBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const type = this.getAttribute('data-enquiry-type');
+                if (type && enquirySelect) {
+                    Array.from(enquirySelect.options).forEach(opt => {
+                        if (type.includes(opt.value) || opt.value.includes(type)) {
+                            opt.selected = true;
+                        }
+                    });
+                }
+            });
         });
     </script>
 
