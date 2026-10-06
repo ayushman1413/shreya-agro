@@ -503,7 +503,7 @@ p { margin: 0 0 12px; color: var(--color-text-light); }
 }
 .chatbot-panel {
     position: fixed; bottom: 100px; right: 24px; z-index: 60;
-    width: 320px; background: var(--color-white); border-radius: 16px;
+    width: 100%; max-width: 320px; background: var(--color-white); border-radius: 16px;
     box-shadow: 0 16px 40px rgba(0,0,0,0.15); overflow: hidden;
     display: none; flex-direction: column; border: 1px solid rgba(0,0,0,0.08);
     color: var(--color-text); font-family: var(--font-body);
