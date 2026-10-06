@@ -1,30 +1,37 @@
-RewriteEngine On
-
-# Force HTTPS
-RewriteCond %{HTTPS} off
-RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
-# Force non-www (pick ONE canonical host — remove this block if you prefer www)
-RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
-
-# Custom 404
+# Shreya Agro Foods — Apache config (Hostinger / cPanel)
+Options -Indexes
+DirectoryIndex index.html
 ErrorDocument 404 /404.html
 
-# No directory listings
-Options -Indexes
+<IfModule mod_rewrite.c>
+RewriteEngine On
 
-# Compression & caching (performance rules from the SEO brief)
+# One canonical host: HTTPS + www (matches the canonical URLs in every page)
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^shreyaagrofoods\.com$ [NC]
+RewriteRule ^ https://www.shreyaagrofoods.com%{REQUEST_URI} [L,R=301]
+
+# Old URL from the previous build
+RewriteRule ^vendor\.html$ /vendor/ [L,R=301]
+</IfModule>
+
 <IfModule mod_deflate.c>
-    AddOutputFilterByType DEFLATE text/html text/css application/javascript text/javascript application/json image/svg+xml
+AddOutputFilterByType DEFLATE text/html text/css application/javascript text/javascript application/json application/ld+json image/svg+xml application/xml
 </IfModule>
 
 <IfModule mod_expires.c>
-    ExpiresActive On
-    ExpiresByType image/webp "access plus 1 year"
-    ExpiresByType image/avif "access plus 1 year"
-    ExpiresByType image/png "access plus 1 year"
-    ExpiresByType image/jpeg "access plus 1 year"
-    ExpiresByType text/css "access plus 1 month"
-    ExpiresByType application/javascript "access plus 1 month"
+ExpiresActive On
+ExpiresByType image/webp "access plus 1 year"
+ExpiresByType image/jpeg "access plus 1 year"
+ExpiresByType image/png "access plus 1 year"
+ExpiresByType font/woff2 "access plus 1 year"
+ExpiresByType text/css "access plus 1 year"
+ExpiresByType application/javascript "access plus 1 year"
+ExpiresByType text/javascript "access plus 1 year"
+ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+Header set X-Content-Type-Options "nosniff"
+Header set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>

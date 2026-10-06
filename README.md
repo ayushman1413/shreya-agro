@@ -1,64 +1,75 @@
 # Shreya Agro Foods — Website
 
-Fully static site for Shreya Agro Foods Ltd. — plain HTML/CSS/JS, no PHP, no database, no admin panel. Built per the SEO/performance brief and the approved homepage design mockup. B2B catalogue (no cart/pricing) — every product and CTA funnels to an enquiry form.
+Static B2B catalogue site for **Shreya Agro Foods Ltd.** (Mumbai). Plain HTML + CSS + vanilla JS — no PHP, no database, no admin panel. Every product and CTA leads to an enquiry form (no cart, no prices).
 
-## Stack
+Built to the "On-Page SEO & Website Performance Guidelines" and the page designs in the project brief (Home, About, Products + product pages, Vendor, Contact & Careers, 404).
 
-- Plain HTML/CSS/JS — nothing to build, nothing to run server-side
-- Plus Jakarta Sans (UI/body) + Playfair Display (headings, matches the approved homepage mockup)
-- Clean URLs via folder structure (`/products/mix-fruit-jam/index.html` → `/products/mix-fruit-jam/`) — no rewrite rules needed for routing
-- Forms submit to [Web3Forms](https://web3forms.com) (free, no backend needed) instead of a database
+## Pages
 
-## Before you deploy: set up form submissions
+| URL | Page |
+| --- | --- |
+| `/` | Home |
+| `/about-us/` | About (hero, intro, vision/mission, why us, journey timeline, quality, B2B CTA) |
+| `/products/` | Products (hero, categories, search + category/sub-category filters, product grid, CTA) |
+| `/products/<slug>/` | 18 product pages (gallery, spec table, why choose, related, enquiry) |
+| `/vendor/` | Vendor / B2B partner page with partner form + brochure download |
+| `/contact-us/` | Contact + Careers combined (enquiry form, openings, application popup, map) |
+| `/careers/` | Short URL → redirects to `/contact-us/#careers` |
+| `404.html` | Custom 404 (served with a real 404 status via `.htaccess`) |
 
-There's no server to receive the enquiry/application forms, so they post directly to Web3Forms, which emails submissions to you.
+Site-wide: sticky header, green chatbot (Product Enquiry / B2B Partnership / Become a Distributor / Careers / Talk to Our Team), B2B enquiry popup that auto-fills "Enquiry For: <product>".
 
-1. Go to [web3forms.com](https://web3forms.com) → enter your email → you'll instantly get a free **Access Key** (no account/signup needed).
-2. Find every `<input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">` in the HTML files and replace `YOUR_WEB3FORMS_ACCESS_KEY` with your real key. It appears in:
-   - `index.html`, `about-us/index.html`, `products/index.html`, `products/*/index.html` (product enquiry modal)
-   - `contact-us/index.html` (three forms: general enquiry, B2B modal, job application modal)
-3. Submissions will arrive by email to the address you registered with Web3Forms.
+## Stack & conventions
 
-## Deploying on Hostinger (hPanel shared hosting)
+- **Font:** Plus Jakarta Sans only (self-hosted variable font, weights 400–800, `font-display: swap`).
+- **Images:** WebP only, responsive (`srcset`/`sizes`), explicit width/height, lazy-loaded below the fold; hero is eager + preloaded. Descriptive names: `shreya-agro-foods-<name>-<width>.webp`. Social-share images live in `assets/images/og/` (1200×630 JPG).
+- **SEO:** unique title/description/canonical/OG per page, one H1, Organization + WebSite (home), Product + BreadcrumbList (product pages), LocalBusiness (contact), `sitemap.xml`, `robots.txt`, HTTPS + www redirect in `.htaccess`.
+- **Colour:** deep green + one lime accent on neutral backgrounds (`#F7F9F4`).
 
-1. **Upload the files** — two options:
-   - **Git (recommended)**: hPanel → Advanced → Git → repository `https://github.com/saitmplacement/shreya-agro.git`, branch `main`, install path `public_html`.
-   - **Manual**: download the repo as a ZIP from GitHub → hPanel → File Manager → upload to `public_html` → extract.
-2. **Replace the Web3Forms access key** (see above) directly in File Manager, or do it before uploading.
-3. **SSL**: hPanel → SSL — usually auto-issued within minutes once your domain points to Hostinger.
-4. Visit `https://yourdomain.com/` — done. No database, no build step, no admin login required.
+## Editing content (source of truth)
 
-## Updating content later
+All pages are generated from one script so header/footer/modals/chatbot stay identical everywhere.
 
-Since there's no admin panel or database, content changes are direct file edits:
-- **Add/edit/remove a job opening**: edit the "Current Openings" section in `contact-us/index.html`.
-- **Add a product**: duplicate one of the `products/<slug>/index.html` files, update its content/meta tags, add a matching card to `products/index.html` and (if it should appear there) `index.html`, and add its URL to `sitemap.xml`.
-- **Edit categories, company info, phone/email**: search-and-replace across the HTML files (the phone number `+91 XXXXX XXXXX` and email are repeated in every page's footer/contact section).
+```bash
+python3 tools/build.py      # needs Python 3 + Pillow; writes the HTML, CSS, JS, sitemap, robots, .htaccess
+```
 
-## Product & category photography
+- **Products, categories, job openings, company details** → top of `tools/build.py` (`PRODUCTS`, `CATEGORIES`, `JOBS`, address/phone/email constants).
+- **Styles** → `tools/src/style.css` · **Scripts** → `tools/src/main.js` (the build minifies them into `assets/css/style.css` and `assets/js/main.js`; if `esbuild` is installed or `$ESBUILD` points to it, JS is minified too).
+- **Add a product:** add an entry to `PRODUCTS`, add its images (see below), run the build — the product page, listing card, sitemap entry and related-products links are generated.
+- **Add / remove a job:** edit `JOBS` (an empty list shows the "No Current Openings" state with "Send Your Resume").
+- **New images:** drop the original into any folder, add it to `SOURCES` in `tools/optimize_images.py`, and run `python3 tools/optimize_images.py <source-dir>` (resizes to WebP + creates the OG JPG).
 
-All product photos, category tiles, the hero banner, the factory/quality photo, and the closing B2B banner are real images (WebP, compressed to 45–130KB each) in `assets/images/categories/`, `assets/images/products/`, and `assets/images/`. Two categories — **Syrups** and **Oils** — still use the icon/gradient placeholder tile since no photo exists for them yet. To finish those:
+Never edit the generated `*.html` files by hand — your changes will be overwritten by the next build.
 
-1. Export/compress a real photo as WebP (100–300KB target).
-2. Name it `shreya-agro-foods-syrups.webp` / `shreya-agro-foods-oils.webp` and save to `assets/images/categories/`.
-3. In `index.html` and `products/index.html`, replace that category's `<div class="thumb cat-syrups"><span class="icon-tile">🧃</span></div>` (or `cat-oils`) with `<div class="thumb"><img src="/assets/images/categories/shreya-agro-foods-syrups.webp" alt="Shreya Agro Foods Syrups" loading="lazy" width="800" height="600"></div>` (same pattern used for every other category).
+## Settings you must fill in before launch — `assets/js/config.js`
 
-If you add more products later, follow the same pattern: a square (800×800) WebP in `assets/images/products/`, referenced from the popular-products card, the product detail page's gallery, and any related-product cards that link to it.
+This one small file is **not** generated; edit it directly (no rebuild needed):
 
-## SEO features already in place
+```js
+window.SHREYA_CONFIG = {
+  web3formsKey: "",   // free key from https://web3forms.com (enter your email, key arrives instantly)
+  gaId: "",           // Google Analytics 4 ID, e.g. "G-XXXXXXXXXX"
+  ...
+};
+```
 
-- Unique `<title>` + meta description + canonical URL on every page
-- One `<h1>` per page, proper H2/H3 hierarchy
-- Organization + WebSite schema (homepage), Product + BreadcrumbList schema (each product page)
-- Static `/sitemap.xml` and `/robots.txt`
-- Custom 404 page (`404.html`, wired via `.htaccess`)
-- Lazy-loading on below-the-fold images, hero loads eagerly
-- Clean, lowercase, hyphenated URLs
+- **Forms:** with a Web3Forms key, enquiry / partner / contact / job-application forms email the submission to you. **Until a key is set, forms fall back to opening the visitor's email app** with the enquiry pre-filled (the success message says so honestly). Resume *attachments* need Web3Forms' paid plan; on the free plan the application arrives as text.
+- **Analytics:** with a GA4 ID the site tracks `view_item` (product views), `enquiry_click`, `generate_lead` (form submissions), `career_apply_click`, `career_application`, `b2b_partner_enquiry`, `phone_click`, `whatsapp_click`, `email_click`. Without an ID nothing is loaded.
 
-## What's stubbed / needs your input
+## Deploy (Hostinger / any static host)
 
-- Syrups and Oils category photos (see above)
-- Web3Forms access key (see above) — **forms won't work until this is set**
-- YouTube link in every footer still points to `#` (no channel provided yet)
+1. Upload the repository contents to `public_html` (hPanel → Git, or upload a ZIP). `tools/` is not needed on the server but harmless.
+2. Enable SSL; `.htaccess` forces HTTPS and the `www.` host (matching the canonical URLs). If you prefer the non-www host, change `DOMAIN` in `tools/build.py`, the rewrite rule in `HTACCESS`, and rebuild.
+3. Set `assets/js/config.js` (above).
+4. Search Console: verify the domain, submit `https://www.shreyaagrofoods.com/sitemap.xml`, request indexing for key pages.
 
-Real business details are wired in: registered office address (Goregaon East, Mumbai), phone `+91 70586 74452`, business hours (Contact page), and Facebook/Instagram/LinkedIn links in every footer + the homepage's Organization/LocalBusiness schema.
+## Still open (needs input from the client)
+
+- YouTube channel link (footer currently shows Facebook, Instagram, LinkedIn only).
+- Real photography from the shared Drive product folder, if it differs from the images already in the repo.
+- Final Google Maps pin / place link if a verified listing exists (the map currently searches the registered address).
+
+## Testing notes
+
+The site was tested in headless Chromium at desktop (1366) and mobile (390) with real clicks, plus an overflow sweep from 320 px to 1920 px: nav, enquiry/apply modals, validation, success and failure states, filters, gallery, chatbot, anchors, 404. Core Web Vitals on localhost: LCP < 0.2 s, CLS 0 (re-check on the live host with PageSpeed Insights).
