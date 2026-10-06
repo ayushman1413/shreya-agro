@@ -124,8 +124,8 @@ p { margin: 0 0 12px; color: var(--color-text-light); }
 .brand-text .brand-name { font-family: var(--font-heading); font-weight: 700; font-size: 1.15rem; line-height: 1.1; color: var(--color-primary-dark); }
 .brand-text .brand-tagline { font-size: 0.72rem; line-height: 1.1; color: var(--color-text-light); }
 
-.main-nav { display: flex; align-items: center; gap: 28px; }
-.main-nav a { font-weight: 500; font-size: 0.95rem; color: var(--color-text); }
+.main-nav { display: flex; align-items: center; gap: 16px; }
+.main-nav a { font-weight: 500; font-size: 0.9rem; color: var(--color-text); white-space: nowrap; }
 .main-nav a.active, .main-nav a:hover { color: var(--color-primary); }
 
 .header-actions { display: flex; align-items: center; gap: 18px; }
@@ -133,7 +133,7 @@ p { margin: 0 0 12px; color: var(--color-text-light); }
 
 .nav-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; }
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
     .main-nav { position: fixed; top: 0; right: 0; bottom: 0; left: auto; width: 320px; max-width: 85vw; background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-left: 1px solid rgba(255, 255, 255, 0.5); flex-direction: column; align-items: flex-start; padding: 90px 30px 40px; gap: 20px; box-shadow: -15px 0 40px rgba(0,0,0,0.15); transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); z-index: 1000; }
     .main-nav a { font-size: 1.25rem; font-weight: 600; width: 100%; border-bottom: 1px solid rgba(0,0,0,0.06); padding-bottom: 12px; }
     .main-nav.open { transform: translateX(0); }
@@ -162,7 +162,6 @@ p { margin: 0 0 12px; color: var(--color-text-light); }
     padding: 0;
     height: calc(100vh - 80px);
     min-height: 500px;
-    max-height: 900px;
     display: flex;
     align-items: center;
 }
@@ -238,21 +237,28 @@ p { margin: 0 0 12px; color: var(--color-text-light); }
 
 @media (max-width: 768px) {
     #homeHero {
-        height: calc(100vh - 60px);
-        min-height: 400px;
+        height: auto;
+        min-height: calc(100vh - 60px);
         align-items: flex-end;
     }
+    .hero-picture {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
     .hero-picture img {
+        height: 100%;
         object-position: center;
     }
     .hero-overlay {
-        position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.1) 70%, rgba(0,0,0,0.7) 100%);
-        justify-content: flex-start;
+        position: relative;
+        background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.2) 100%);
+        justify-content: flex-end;
         align-items: center;
         text-align: center;
-        padding-top: 80px;
+        padding-top: 50px;
         padding-bottom: 40px;
         height: 100%;
         width: 100%;
@@ -265,9 +271,6 @@ p { margin: 0 0 12px; color: var(--color-text-light); }
     .hero-overlay p {
         font-size: 1.1rem;
         margin-bottom: 30px;
-    }
-    .hero-overlay .btn-hero {
-        margin-top: auto;
     }
     .hero-badge { width: 84px; height: 84px; top: 16px; right: 16px; }
 }
@@ -283,10 +286,6 @@ p { margin: 0 0 12px; color: var(--color-text-light); }
 .section-head p { margin: 0; max-width: 560px; }
 
 /* ---------- Category grid ---------- */
-    width: 28px; height: 28px; border-radius: 50%;
-    background: var(--color-primary); color: var(--color-white);
-    display: flex; align-items: center; justify-content: center; font-size: 0.85rem; flex-shrink: 0;
-}
 
 /* ---------- Product cards ---------- */
 .product-grid {
@@ -294,7 +293,7 @@ p { margin: 0 0 12px; color: var(--color-text-light); }
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
 }
-@media (max-width: 900px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 1100px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 520px) { 
     .product-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; } 
     .product-card { padding: 14px; }
@@ -899,6 +898,8 @@ p { margin: 0 0 12px; color: var(--color-text-light); }
     max-width: 100%;
     height: auto;
     object-fit: contain;
+    border-radius: 16px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.08);
 }
 .hero-b2b-badge {
     position: absolute;
