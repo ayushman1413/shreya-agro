@@ -19,7 +19,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&family=Great+Vibes&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="icon" href="/assets/images/shreya-agro-foods-logo.png">
@@ -47,9 +47,12 @@
             <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
             <nav class="main-nav" id="mainNav">
                 <a href="/" class="active">Home</a>
-                <a href="/about-us/">About</a>
+                <a href="/about-us/">About Us</a>
                 <a href="/products/">Products</a>
-                <a href="/contact-us/">Contact Us</a>
+                <a href="/quality/">Quality</a>
+                <a href="/our-journey/">Our Journey</a>
+                <a href="/vendor.html">B2B Partner</a>
+                <a href="/contact-us/">Contact</a>
             </nav>
             <div class="header-actions">
                 <button class="search-toggle" id="searchToggle" aria-label="Search products">&#128269;</button>
@@ -72,85 +75,107 @@
 
     <section class="section" id="products">
         <div class="container">
-            <div class="section-head">
-                <div>
-                    <span class="eyebrow">Our Products</span>
-                    <h2>A Taste for Every Occasion</h2>
-                    <p>From everyday meals to festive celebrations, our wide range of products brings flavour, nutrition
-                        and tradition to your table.</p>
+            <div class="section-head" style="align-items: center; text-align: left; display: flex; justify-content: space-between; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 280px;">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                         <span class="eyebrow" style="margin:0;">Our Product Categories</span>
+                         <div style="height: 1px; width: 60px; background: var(--color-secondary);"></div>
+                    </div>
+                    <h2 style="font-size: clamp(2.2rem, 4vw, 3.2rem);">A World of Flavours, <span class="script-font">Under One Roof</span></h2>
+                    <p style="max-width: 500px;">From everyday meals to festive celebrations, our wide range of products brings flavour, nutrition and tradition to your table.</p>
                 </div>
-                <a href="/products/" class="btn-link">View All Products &rarr;</a>
+                <a href="/products/" class="btn btn-outline" style="background:#eef3e6; border:none; color:var(--color-primary-dark); font-weight:700; border-radius: 999px; margin-top: 16px;">View All Products &rarr;</a>
             </div>
 
             <div class="category-grid">
-                <div class="category-card">
-                    <a href="/products/?category=masalas" class="thumb"><img src="/assets/images/products/Shreya-Spice-Powder-Collection.png" style="object-fit:contain; padding: 10px; background-color: #ffffff;"
-                            alt="Shreya Agro Foods Masalas" loading="lazy" width="800" height="600"></a>
-                    <div class="meta" style="flex-wrap: wrap; gap: 8px;">
-                        <a href="/products/?category=masalas" style="font-weight: 600; font-size: 0.95rem; color: var(--color-text); text-decoration: none;">Masalas</a>
-                        <button type="button" class="js-open-enquiry" style="background: none; border: none; padding: 0; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-family: var(--font-body); font-weight: 600; font-size: 0.85rem; color: var(--color-text);" data-product-name="Masalas" data-enquiry-type="Category Enquiry">Enquiry Now <span class="arrow" style="width: 28px; height: 28px; border-radius: 50%; background: var(--color-primary); color: var(--color-white); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; flex-shrink: 0;">&rarr;</span></button>
+                <div class="category-card cat-masalas">
+                    <div class="cat-content">
+                        <div class="cat-icon"><span style="font-size: 1.2rem;">🌿</span></div>
+                        <h3>Masalas</h3>
+                        <p>Authentic spices for richer flavours.</p>
+                        <a href="/products/?category=masalas" class="btn-cat">View Products &rarr;</a>
+                    </div>
+                    <div class="cat-image">
+                        <img src="/assets/images/products/Shreya-Spice-Powder-Collection.png" alt="Masalas" loading="lazy">
                     </div>
                 </div>
-                <div class="category-card">
-                    <a href="/products/?category=pickles" class="thumb"><img src="/assets/images/products/Shreya-Mango-and-Mix-Pickle-Display.png" style="object-fit:contain; padding: 10px; background-color: #ffffff;"
-                            alt="Shreya Agro Foods Pickles" loading="lazy" width="800" height="600"></a>
-                    <div class="meta" style="flex-wrap: wrap; gap: 8px;">
-                        <a href="/products/?category=pickles" style="font-weight: 600; font-size: 0.95rem; color: var(--color-text); text-decoration: none;">Pickles</a>
-                        <button type="button" class="js-open-enquiry" style="background: none; border: none; padding: 0; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-family: var(--font-body); font-weight: 600; font-size: 0.85rem; color: var(--color-text);" data-product-name="Pickles" data-enquiry-type="Category Enquiry">Enquiry Now <span class="arrow" style="width: 28px; height: 28px; border-radius: 50%; background: var(--color-primary); color: var(--color-white); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; flex-shrink: 0;">&rarr;</span></button>
+                <div class="category-card cat-pickles">
+                    <div class="cat-content">
+                        <div class="cat-icon"><span style="font-size: 1.2rem;">🍯</span></div>
+                        <h3>Pickles</h3>
+                        <p>Traditional taste, made with care.</p>
+                        <a href="/products/?category=pickles" class="btn-cat">View Products &rarr;</a>
+                    </div>
+                    <div class="cat-image">
+                        <img src="/assets/images/products/Shreya-Mango-and-Mix-Pickle-Display.png" alt="Pickles" loading="lazy">
                     </div>
                 </div>
-                <div class="category-card">
-                    <a href="/products/?category=sweets" class="thumb"><img src="/assets/images/products/Shreya-Gulab-Jamun-and-Rasgulla-Duo.png" style="object-fit:contain; padding: 10px; background-color: #ffffff;"
-                            alt="Shreya Agro Foods Sweets" loading="lazy" width="800" height="600"></a>
-                    <div class="meta" style="flex-wrap: wrap; gap: 8px;">
-                        <a href="/products/?category=sweets" style="font-weight: 600; font-size: 0.95rem; color: var(--color-text); text-decoration: none;">Sweets</a>
-                        <button type="button" class="js-open-enquiry" style="background: none; border: none; padding: 0; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-family: var(--font-body); font-weight: 600; font-size: 0.85rem; color: var(--color-text);" data-product-name="Sweets" data-enquiry-type="Category Enquiry">Enquiry Now <span class="arrow" style="width: 28px; height: 28px; border-radius: 50%; background: var(--color-primary); color: var(--color-white); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; flex-shrink: 0;">&rarr;</span></button>
+                <div class="category-card cat-sweets">
+                    <div class="cat-content">
+                        <div class="cat-icon"><span style="font-size: 1.2rem;">🧁</span></div>
+                        <h3>Sweets</h3>
+                        <p>Sweet moments, made special.</p>
+                        <a href="/products/?category=sweets" class="btn-cat">View Products &rarr;</a>
+                    </div>
+                    <div class="cat-image">
+                        <img src="/assets/images/products/Shreya-Gulab-Jamun-and-Rasgulla-Duo.png" alt="Sweets" loading="lazy">
                     </div>
                 </div>
-                <div class="category-card">
-                    <a href="/products/?category=soan-papdi" class="thumb"><img src="/assets/images/products/Shreya-Soan-Papdi-Flavour-Collection.png" style="object-fit:contain; padding: 10px; background-color: #ffffff;"
-                            alt="Shreya Agro Foods Soan Papdi" loading="lazy" width="800" height="600"></a>
-                    <div class="meta" style="flex-wrap: wrap; gap: 8px;">
-                        <a href="/products/?category=soan-papdi" style="font-weight: 600; font-size: 0.95rem; color: var(--color-text); text-decoration: none;">Soan Papdi</a>
-                        <button type="button" class="js-open-enquiry" style="background: none; border: none; padding: 0; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-family: var(--font-body); font-weight: 600; font-size: 0.85rem; color: var(--color-text);" data-product-name="Soan Papdi" data-enquiry-type="Category Enquiry">Enquiry Now <span class="arrow" style="width: 28px; height: 28px; border-radius: 50%; background: var(--color-primary); color: var(--color-white); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; flex-shrink: 0;">&rarr;</span></button>
+                <div class="category-card cat-soan">
+                    <div class="cat-content">
+                        <div class="cat-icon"><span style="font-size: 1.2rem;">📦</span></div>
+                        <h3>Soan Papdi</h3>
+                        <p>Light, flaky and delicious.</p>
+                        <a href="/products/?category=soan-papdi" class="btn-cat">View Products &rarr;</a>
+                    </div>
+                    <div class="cat-image">
+                        <img src="/assets/images/products/Shreya-Soan-Papdi-Flavour-Collection.png" alt="Soan Papdi" loading="lazy">
                     </div>
                 </div>
-                <div class="category-card">
-                    <a href="/products/?category=jams" class="thumb"><img src="/assets/images/products/Shreya-Mix-Fruits-Jam-Jars.png" style="object-fit:contain; padding: 10px; background-color: #ffffff;"
-                            alt="Shreya Agro Foods Jams" loading="lazy" width="800" height="600"></a>
-                    <div class="meta" style="flex-wrap: wrap; gap: 8px;">
-                        <a href="/products/?category=jams" style="font-weight: 600; font-size: 0.95rem; color: var(--color-text); text-decoration: none;">Jams</a>
-                        <button type="button" class="js-open-enquiry" style="background: none; border: none; padding: 0; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-family: var(--font-body); font-weight: 600; font-size: 0.85rem; color: var(--color-text);" data-product-name="Jams" data-enquiry-type="Category Enquiry">Enquiry Now <span class="arrow" style="width: 28px; height: 28px; border-radius: 50%; background: var(--color-primary); color: var(--color-white); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; flex-shrink: 0;">&rarr;</span></button>
+                <div class="category-card cat-jams">
+                    <div class="cat-content">
+                        <div class="cat-icon"><span style="font-size: 1.2rem;">🍓</span></div>
+                        <h3>Jams</h3>
+                        <p>Pure fruit goodness in every bite.</p>
+                        <a href="/products/?category=jams" class="btn-cat">View Products &rarr;</a>
+                    </div>
+                    <div class="cat-image">
+                        <img src="/assets/images/products/Shreya-Mix-Fruits-Jam-Jars.png" alt="Jams" loading="lazy">
                     </div>
                 </div>
-
-                <div class="category-card">
-                    <a href="/products/?category=flour" class="thumb"><img src="/assets/images/products/Shreya-Besan-Chakki-Ka-Atta-Package.png" style="object-fit:contain; padding: 10px; background-color: #ffffff;"
-                            alt="Shreya Agro Foods Besan" loading="lazy" width="800" height="600"></a>
-                    <div class="meta" style="flex-wrap: wrap; gap: 8px;">
-                        <a href="/products/?category=flour" style="font-weight: 600; font-size: 0.95rem; color: var(--color-text); text-decoration: none;">Besan</a>
-                        <button type="button" class="js-open-enquiry" style="background: none; border: none; padding: 0; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-family: var(--font-body); font-weight: 600; font-size: 0.85rem; color: var(--color-text);" data-product-name="Besan" data-enquiry-type="Category Enquiry">Enquiry Now <span class="arrow" style="width: 28px; height: 28px; border-radius: 50%; background: var(--color-primary); color: var(--color-white); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; flex-shrink: 0;">&rarr;</span></button>
+                <div class="category-card cat-besan">
+                    <div class="cat-content">
+                        <div class="cat-icon"><span style="font-size: 1.2rem;">🌾</span></div>
+                        <h3>Besan</h3>
+                        <p>Pure, nutritious and versatile.</p>
+                        <a href="/products/?category=flour" class="btn-cat">View Products &rarr;</a>
+                    </div>
+                    <div class="cat-image">
+                        <img src="/assets/images/products/Shreya-Besan-Chakki-Ka-Atta-Package.png" alt="Besan" loading="lazy">
                     </div>
                 </div>
-                <div class="category-card">
-                    <a href="/products/?category=jaggery" class="thumb"><img src="/assets/images/products/Shreya-Jaggery-Cubes-and-Powder-Jars.png" style="object-fit:contain; padding: 10px; background-color: #ffffff;"
-                            alt="Shreya Agro Foods Jaggery" loading="lazy" width="800" height="600"></a>
-                    <div class="meta" style="flex-wrap: wrap; gap: 8px;">
-                        <a href="/products/?category=jaggery" style="font-weight: 600; font-size: 0.95rem; color: var(--color-text); text-decoration: none;">Jaggery</a>
-                        <button type="button" class="js-open-enquiry" style="background: none; border: none; padding: 0; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-family: var(--font-body); font-weight: 600; font-size: 0.85rem; color: var(--color-text);" data-product-name="Jaggery" data-enquiry-type="Category Enquiry">Enquiry Now <span class="arrow" style="width: 28px; height: 28px; border-radius: 50%; background: var(--color-primary); color: var(--color-white); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; flex-shrink: 0;">&rarr;</span></button>
+                <div class="category-card cat-jaggery">
+                    <div class="cat-content">
+                        <div class="cat-icon"><span style="font-size: 1.2rem;">🧊</span></div>
+                        <h3>Jaggery</h3>
+                        <p>Natural sweetness, with goodness.</p>
+                        <a href="/products/?category=jaggery" class="btn-cat">View Products &rarr;</a>
+                    </div>
+                    <div class="cat-image">
+                        <img src="/assets/images/products/Shreya-Jaggery-Cubes-and-Powder-Jars.png" alt="Jaggery" loading="lazy">
                     </div>
                 </div>
-                <div class="category-card">
-                    <a href="/products/?category=biscuits" class="thumb"><img src="/assets/images/products/Shreya-Rusk-Toast-Product-Display.png" style="object-fit:contain; padding: 10px; background-color: #ffffff;"
-                            alt="Shreya Agro Foods Rusk Toast" loading="lazy" width="800" height="600"></a>
-                    <div class="meta" style="flex-wrap: wrap; gap: 8px;">
-                        <a href="/products/?category=biscuits" style="font-weight: 600; font-size: 0.95rem; color: var(--color-text); text-decoration: none;">Rusk Toast</a>
-                        <button type="button" class="js-open-enquiry" style="background: none; border: none; padding: 0; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-family: var(--font-body); font-weight: 600; font-size: 0.85rem; color: var(--color-text);" data-product-name="Rusk Toast" data-enquiry-type="Category Enquiry">Enquiry Now <span class="arrow" style="width: 28px; height: 28px; border-radius: 50%; background: var(--color-primary); color: var(--color-white); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; flex-shrink: 0;">&rarr;</span></button>
+                <div class="category-card cat-rusk">
+                    <div class="cat-content">
+                        <div class="cat-icon"><span style="font-size: 1.2rem;">🍞</span></div>
+                        <h3>Rusk Toast</h3>
+                        <p>Crispy, crunchy, perfect with tea.</p>
+                        <a href="/products/?category=biscuits" class="btn-cat">View Products &rarr;</a>
+                    </div>
+                    <div class="cat-image">
+                        <img src="/assets/images/products/Shreya-Rusk-Toast-Product-Display.png" alt="Rusk Toast" loading="lazy">
                     </div>
                 </div>
-
-                
-                
             </div>
         </div>
     </section>
